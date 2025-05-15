@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.datex_android_app"
+    namespace = "com.dating.datexapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.datex_android_app"
+        applicationId = "com.dating.datexapp"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

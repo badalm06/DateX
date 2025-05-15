@@ -1,4 +1,4 @@
-package com.example.datex_android_app
+package com.dating.datexapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

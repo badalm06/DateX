@@ -1,4 +1,4 @@
-package com.example.datex_android_app
+package com.dating.datexapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.datex_android_app.ui.theme.DatexandroidappTheme
+import com.dating.datexapp.ui.theme.DatexandroidappTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

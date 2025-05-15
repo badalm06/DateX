@@ -1,4 +1,4 @@
-package com.example.datex_android_app.ui.theme
+package com.dating.datexapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
