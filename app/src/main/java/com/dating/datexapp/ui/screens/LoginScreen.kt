@@ -105,7 +105,7 @@ fun LoginScreen(
             Row(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(start = 8.dp, end = 16.dp), // Balanced left & right padding
+                    .padding(start = 8.dp, end = 16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
@@ -210,16 +210,16 @@ fun LoginScreen(
 
 
         // Social Login Buttons
-        // Social Login Image
+
         Image(
-            painter = painterResource(id = R.drawable.sign_up), // Make sure the image name is `frame_17.png`
+            painter = painterResource(id = R.drawable.sign_up),
             contentDescription = "Facebook and Google Login",
             modifier = Modifier
                 .offset(x = 30.dp, y = 466.dp)
                 .width(335.dp)
-                .height(140.dp) // Approximate total height of both buttons together
+                .height(140.dp)
                 .clickable {
-                    // Optional: Trigger actions here or break this into ImageMap if needed
+
                 }
         )
 

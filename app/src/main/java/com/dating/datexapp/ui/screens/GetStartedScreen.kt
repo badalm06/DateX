@@ -60,7 +60,7 @@ fun GetStartedScreen(
         ) {
             // Time
             Image(
-                painter = painterResource(id = R.drawable.ic_time), // Replace with your actual time drawable name
+                painter = painterResource(id = R.drawable.ic_time),
                 contentDescription = "Time",
                 modifier = Modifier.size(width = 54.dp, height = 21.dp)
             )
@@ -71,19 +71,19 @@ fun GetStartedScreen(
             ) {
                 // Cellular
                 Image(
-                    painter = painterResource(id = R.drawable.ic_cellular), // Replace with your actual drawable
+                    painter = painterResource(id = R.drawable.ic_cellular),
                     contentDescription = "Cellular",
                     modifier = Modifier.size(width = 17.dp, height = 10.66.dp)
                 )
                 // WiFi
                 Image(
-                    painter = painterResource(id = R.drawable.ic_wifi), // Replace with your actual drawable
+                    painter = painterResource(id = R.drawable.ic_wifi),
                     contentDescription = "Wi-Fi",
                     modifier = Modifier.size(width = 15.33.dp, height = 11.dp)
                 )
                 // Battery
                 Image(
-                    painter = painterResource(id = R.drawable.ic_battery), // Replace with your actual drawable
+                    painter = painterResource(id = R.drawable.ic_battery),
                     contentDescription = "Battery",
                     modifier = Modifier.size(width = 24.33.dp, height = 11.33.dp)
                 )
@@ -93,16 +93,16 @@ fun GetStartedScreen(
 
         // Logo
         Image(
-            painter = painterResource(id = R.drawable.logo), // replace with actual logo name
+            painter = painterResource(id = R.drawable.logo),
             contentDescription = "Logo",
             modifier = Modifier
                 .size(121.dp)
                 .offset(x = 127.dp, y = 19.dp)
         )
 
-        // People Circles Image (Whole group can be pre-designed as 1 image)
+
         Image(
-            painter = painterResource(id = R.drawable.group907), // you can also layer if needed
+            painter = painterResource(id = R.drawable.group907),
             contentDescription = "Hero Image",
             modifier = Modifier
                 .width(400.dp)
@@ -216,19 +216,6 @@ fun GetStartedScreen(
     }
 }
 
-//@Composable
-//fun CustomIcon(
-//    painter: Painter,
-//    contentDescription: String,
-//    modifier: Modifier = Modifier,
-//    tint: Color = Color.Unspecified
-//) {
-//    Image(
-//        painter = painter,
-//        contentDescription = contentDescription,
-//        modifier = modifier
-//    )
-//}
 
 @Preview(showBackground = true)
 @Composable
