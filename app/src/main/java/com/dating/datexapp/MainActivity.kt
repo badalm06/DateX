@@ -15,21 +15,38 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.dating.datexapp.ui.navigation.AppNavGraph
+import com.dating.datexapp.ui.screens.GetStartedScreen
+import com.dating.datexapp.ui.screens.LoginScreen
 import com.dating.datexapp.ui.theme.DatexandroidappTheme
+
+//class MainActivity : ComponentActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContent {
+//            DatexandroidappTheme {
+//                Surface(color = MaterialTheme.colorScheme.background) {
+//                    val navController = rememberNavController()
+//                    AppNavGraph(navController = navController) // ⬅️ Loads your SplashScreen (Composable)
+//                }
+//            }
+//        }
+//    }
+//}
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            DatexandroidappTheme {
-                Surface(color = MaterialTheme.colorScheme.background) {
-                    val navController = rememberNavController()
-                    AppNavGraph(navController = navController) // ⬅️ Loads your SplashScreen (Composable)
-                }
-            }
+            LoginScreen(
+                onContinueClick = { /* TODO: handle Continue */ },
+                onFacebookLogin = { /* TODO: handle Facebook Login */ },
+                onGoogleLogin = { /* TODO: handle Google Login */ },
+                onSignUpClick = { /* TODO: handle Sign Up */ }
+            )
         }
     }
 }
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {

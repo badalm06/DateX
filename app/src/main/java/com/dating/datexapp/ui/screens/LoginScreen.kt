@@ -1,0 +1,264 @@
+package com.dating.datexapp.ui.screens
+
+import androidx.compose.foundation.Image
+import com.dating.datexapp.R
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+
+
+@Composable
+fun LoginScreen(
+    onContinueClick: () -> Unit,
+    onFacebookLogin: () -> Unit,
+    onGoogleLogin: () -> Unit,
+    onSignUpClick: () -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Brush.verticalGradient(listOf(Color(0xFFFFFBFA), Color.White)))
+    ) {
+        // Status Bar (reuse from GetStartedScreen)
+        Spacer(modifier = Modifier.height(44.dp))
+        // You can extract this into a @Composable function if reused
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 7.33.dp, start = 21.dp, end = 21.dp)
+                .height(21.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(painter = painterResource(R.drawable.ic_time), contentDescription = "Time", modifier = Modifier.size(54.dp, 21.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                Image(painter = painterResource(R.drawable.ic_cellular), contentDescription = "Cellular", modifier = Modifier.size(17.dp, 10.66.dp))
+                Image(painter = painterResource(R.drawable.ic_wifi), contentDescription = "WiFi", modifier = Modifier.size(15.33.dp, 11.dp))
+                Image(painter = painterResource(R.drawable.ic_battery), contentDescription = "Battery", modifier = Modifier.size(24.33.dp, 11.33.dp))
+            }
+        }
+
+        // Logo
+        Image(
+            painter = painterResource(id = R.drawable.logo),
+            contentDescription = "Logo",
+            modifier = Modifier
+                .size(121.dp)
+                .offset(x = 127.dp, y = 20.dp)
+        )
+
+        // Title
+        Text(
+            text = "Let’s start with your number",
+            modifier = Modifier
+                .width(266.dp)
+                .offset(x = 54.dp, y = 145.dp),
+            textAlign = TextAlign.Center,
+            fontSize = 24.sp,
+            fontWeight = FontWeight.SemiBold,
+            fontFamily = FontFamily(Font(R.font.manrope_semi_boldddd)),
+            color = Color.Black
+        )
+
+        // Phone Input Field (static styled mock layout)
+        Box(
+            modifier = Modifier
+                .offset(x = 35.dp, y = 237.dp)
+                .width(325.dp)
+                .height(56.dp)
+                .background(Color.White, shape = RoundedCornerShape(50.dp))
+                .border(1.dp, Color(0xFFF64F8B), shape = RoundedCornerShape(50.dp))
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = 8.dp, end = 16.dp), // Balanced left & right padding
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.flag),
+                    contentDescription = "Flag",
+                    modifier = Modifier.size(42.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "+91",
+                    fontFamily = FontFamily(Font(R.font.manrope_regularrrr)),
+                    fontSize = 14.sp,
+                    color = Color.Black
+                )
+                Spacer(modifier = Modifier.width(6.dp))
+                Icon(
+                    painter = painterResource(id = R.drawable.vector),
+                    contentDescription = "Dropdown",
+                    modifier = Modifier.size(8.dp),
+                )
+                Spacer(modifier = Modifier.width(6.dp))
+                Image(
+                    painter = painterResource(id = R.drawable.line1),
+                    contentDescription = "Divider",
+                    modifier = Modifier
+                        .height(28.dp)
+                        .width(1.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    text = "Enter phone number",
+                    fontSize = 15.sp,
+                    fontFamily = FontFamily(Font(R.font.manrope_regularrrr)),
+                    color = Color.Gray
+                )
+            }
+        }
+
+
+        // Continue Button
+        Button(
+            onClick = onContinueClick,
+            modifier = Modifier
+                .width(325.dp)
+                .height(58.dp)
+                .offset(x = 35.dp, y = 330.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+            shape = RoundedCornerShape(50),
+            contentPadding = PaddingValues(),
+
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(Color(0xFFF64F8B), Color(0xFFF8CE61))
+                        ),
+                        shape = RoundedCornerShape(50)
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Continue",
+                    color = Color.White,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    fontFamily = FontFamily(Font(R.font.manrope_semi_boldddd))
+                )
+            }
+        }
+
+        // OR Divider
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .offset(y = 418.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 25.dp),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Box(
+                modifier = Modifier
+                    .width(80.dp)
+                    .height(1.dp)
+                    .background(Color(0xFFD8D8D8))
+            )
+            Text(
+                text = " OR ",
+                fontSize = 14.sp,
+                fontFamily = FontFamily(Font(R.font.manrope_regularrrr)),
+                color = Color.Black,
+                modifier = Modifier.padding(horizontal = 8.dp)
+            )
+            Box(
+                modifier = Modifier
+                    .width(80.dp)
+                    .height(1.dp)
+                    .background(Color(0xFFD8D8D8))
+            )
+        }
+
+
+        // Social Login Buttons
+        // Social Login Image
+        Image(
+            painter = painterResource(id = R.drawable.sign_up), // Make sure the image name is `frame_17.png`
+            contentDescription = "Facebook and Google Login",
+            modifier = Modifier
+                .offset(x = 30.dp, y = 466.dp)
+                .width(335.dp)
+                .height(140.dp) // Approximate total height of both buttons together
+                .clickable {
+                    // Optional: Trigger actions here or break this into ImageMap if needed
+                }
+        )
+
+
+
+        // Bottom Text
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .offset(y = 790.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Row {
+                Text(
+                    text = "Don’t have an account? ",
+                    fontSize = 14.sp,
+                    fontFamily = FontFamily(Font(R.font.manrope_regularrrr))
+                )
+                Text(
+                    text = "Sign Up",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    fontFamily = FontFamily(Font(R.font.manrope_semi_boldddd)),
+                    color = Color(0xFFE94057),
+                    modifier = Modifier.clickable { onSignUpClick() }
+                )
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun LoginScreenPreview() {
+    LoginScreen(
+        onContinueClick = {},
+        onFacebookLogin = {},
+        onGoogleLogin = {},
+        onSignUpClick = {}
+    )
+}
+
