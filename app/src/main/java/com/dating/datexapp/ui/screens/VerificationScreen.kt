@@ -23,6 +23,9 @@ import androidx.compose.ui.unit.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
+import com.dating.datexapp.ui.common.GradientButton
+import com.dating.datexapp.ui.common.IconButtonBox
+import com.dating.datexapp.ui.common.StatusBar
 
 
 @Composable
@@ -42,56 +45,18 @@ fun VerificationCodeScreen(
             )
     ) {
         // Status Bar
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 7.33.dp, start = 21.dp, end = 21.dp)
-                .height(21.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(
-                painter = painterResource(R.drawable.ic_time),
-                contentDescription = "Time",
-                modifier = Modifier.size(54.dp, 21.dp)
-            )
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                Image(
-                    painter = painterResource(R.drawable.ic_cellular),
-                    contentDescription = "Cellular",
-                    modifier = Modifier.size(17.dp, 10.66.dp)
-                )
-                Image(
-                    painter = painterResource(R.drawable.ic_wifi),
-                    contentDescription = "WiFi",
-                    modifier = Modifier.size(15.33.dp, 11.dp)
-                )
-                Image(
-                    painter = painterResource(R.drawable.ic_battery),
-                    contentDescription = "Battery",
-                    modifier = Modifier.size(24.33.dp, 11.33.dp)
-                )
-            }
-        }
+        Spacer(modifier = Modifier.height(44.dp))
+        StatusBar()
+
 
         // Back Button
-        Box(
-            modifier = Modifier
-                .offset(x = 20.dp, y = 54.dp)
-                .size(24.dp)
-                .clickable { /* TODO: Handle back */ },
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.back_arrow),
-                contentDescription = "Back",
-                tint = Color(0xFF1E1E1E),
-                modifier = Modifier.size(16.dp, 14.dp)
-            )
-        }
+        IconButtonBox(
+            iconResId = R.drawable.back_arrow,
+            contentDescription = "Back",
+            onClick = { /* Handle back */ },
+            modifier = Modifier.offset(x = 20.dp, y = 54.dp)
+        )
+
 
         // Progress bar
         Box(
@@ -218,37 +183,15 @@ fun VerificationCodeScreen(
 
 
             // Continue Button
-            Button(
-                onClick = onContinueClick,
+
+            GradientButton(
+                text = "Continue",
                 modifier = Modifier
-                    .width(325.dp)
-                    .height(58.dp)
                     .align(Alignment.CenterHorizontally)
-                    .padding(top = 0.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                shape = RoundedCornerShape(50),
-                contentPadding = PaddingValues()
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(
-                            Brush.verticalGradient(
-                                listOf(Color(0xFFF64F8B), Color(0xFFF8CE61))
-                            ),
-                            shape = RoundedCornerShape(50)
-                        ),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = "Continue",
-                        color = Color.White,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        fontFamily = FontFamily(Font(R.font.manrope_semi_boldddd))
-                    )
-                }
-            }
+                    .width(325.dp)
+                    .height(58.dp),
+                onClick = onContinueClick
+            )
         }
     }
 }

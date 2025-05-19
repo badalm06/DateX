@@ -1,7 +1,9 @@
 package com.dating.datexapp.ui.screens
 
+import android.R.attr.phoneNumber
 import androidx.compose.foundation.Image
 import com.dating.datexapp.R
+import com.dating.datexapp.ui.common.GradientButton
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -47,6 +49,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.dating.datexapp.ui.common.PhoneNumberInputField
+import com.dating.datexapp.ui.common.StatusBar
 
 
 @Composable
@@ -69,25 +73,8 @@ fun LoginScreen(
         )
         // Status Bar (reuse from GetStartedScreen)
         Spacer(modifier = Modifier.height(44.dp))
-        // You can extract this into a @Composable function if reused
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 7.33.dp, start = 21.dp, end = 21.dp)
-                .height(21.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(painter = painterResource(R.drawable.ic_time), contentDescription = "Time", modifier = Modifier.size(54.dp, 21.dp))
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                Image(painter = painterResource(R.drawable.ic_cellular), contentDescription = "Cellular", modifier = Modifier.size(17.dp, 10.66.dp))
-                Image(painter = painterResource(R.drawable.ic_wifi), contentDescription = "WiFi", modifier = Modifier.size(15.33.dp, 11.dp))
-                Image(painter = painterResource(R.drawable.ic_battery), contentDescription = "Battery", modifier = Modifier.size(24.33.dp, 11.33.dp))
-            }
-        }
+        StatusBar()
+
 
         // Logo
         Image(
@@ -110,105 +97,26 @@ fun LoginScreen(
             fontFamily = FontFamily(Font(R.font.manrope_semi_boldddd)),
             color = Color.Black
         )
-        
 
-       // Inside your LoginScreen @Composable:
-        var phoneNumber by remember { mutableStateOf("") }
+            // Phone number text field
+        var phoneNumber by remember { mutableStateOf("") } // ✅ Correct (String)
 
-        Row(
+        PhoneNumberInputField(
+            phoneNumber = phoneNumber.toString(),
+            onPhoneNumberChange = { phoneNumber = it },
+            modifier = Modifier.offset(x = 35.dp, y = 237.dp)
+        )
+
+
+        GradientButton(
+            text = "Continue",
             modifier = Modifier
-                .offset(x = 35.dp, y = 237.dp)
+                .offset(x = 35.dp, y = 330.dp)
                 .width(325.dp)
-                .height(56.dp)
-                .background(Color.White, shape = RoundedCornerShape(50.dp))
-                .border(1.dp, Color(0xFFF64F8B), shape = RoundedCornerShape(50.dp))
-                .padding(start = 12.dp, end = 12.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.flag),
-                contentDescription = "Flag",
-                modifier = Modifier.size(40.dp)
-            )
-            Spacer(modifier = Modifier.width(6.dp))
-            Text(
-                text = "+91",
-                fontSize = 14.sp,
-                fontFamily = FontFamily(Font(R.font.manrope_regularrrr)),
-                color = Color.Black
-            )
-            Spacer(modifier = Modifier.width(6.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.vector),
-                contentDescription = "Dropdown",
-                modifier = Modifier.size(8.dp)
-            )
-            Spacer(modifier = Modifier.width(6.dp))
-            Image(
-                painter = painterResource(id = R.drawable.line1),
-                contentDescription = "Divider",
-                modifier = Modifier
-                    .height(28.dp)
-                    .width(1.dp)
-            )
-            Spacer(modifier = Modifier.width(8.dp))
+                .height(58.dp),
+            onClick = onContinueClick
+        )
 
-            OutlinedTextField(
-                value = phoneNumber,
-                onValueChange = { phoneNumber = it },
-                placeholder = {
-                    Text(
-                        "Enter phone number",
-                        fontFamily = FontFamily(Font(R.font.manrope_regularrrr))
-                    )
-                },
-                singleLine = true,
-                modifier = Modifier.weight(1f),
-                colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedBorderColor = Color.Transparent,
-                    focusedBorderColor = Color.Transparent,
-                    cursorColor = Color.Black
-                ),
-                textStyle = TextStyle(
-                    fontSize = 15.sp,
-                    fontFamily = FontFamily(Font(R.font.manrope_regularrrr))
-                )
-            )
-        }
-
-
-        // Continue Button
-        Button(
-            onClick = onContinueClick,
-            modifier = Modifier
-                .width(325.dp)
-                .height(58.dp)
-                .offset(x = 35.dp, y = 330.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-            shape = RoundedCornerShape(50),
-            contentPadding = PaddingValues(),
-
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(
-                        Brush.verticalGradient(
-                            listOf(Color(0xFFF64F8B), Color(0xFFF8CE61))
-                        ),
-                        shape = RoundedCornerShape(50)
-                    ),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "Continue",
-                    color = Color.White,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    fontFamily = FontFamily(Font(R.font.manrope_semi_boldddd))
-                )
-            }
-        }
 
         // OR Divider
         Row(
