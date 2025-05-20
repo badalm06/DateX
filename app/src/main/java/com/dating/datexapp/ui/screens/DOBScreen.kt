@@ -23,6 +23,8 @@ import com.dating.datexapp.ui.common.ProgressIndicator
 import com.dating.datexapp.ui.common.StatusBar
 import com.dating.datexapp.ui.common.TitleText
 
+
+
 @Composable
 fun DOBScreen(
     age: Int,

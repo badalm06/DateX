@@ -29,11 +29,12 @@ import com.dating.datexapp.ui.common.StatusBar
 
 @Composable
 fun MyNumberIsScreen(
-    onContinueClick: () -> Unit,
-    onFacebookLogin: () -> Unit,
-    onGoogleLogin: () -> Unit,
-    onSignUpClick: () -> Unit
+    onContinue: (String) -> Unit,
+    onBackClick: () -> Unit
+
 ) {
+    var phoneNumber by remember { mutableStateOf("") }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -61,7 +62,7 @@ fun MyNumberIsScreen(
         IconButtonBox(
             iconResId = R.drawable.back_arrow,
             contentDescription = "Back",
-            onClick = { /* Handle back */ },
+            onClick = onBackClick,
             modifier = Modifier.offset(x = 20.dp, y = 54.dp)
         )
 
@@ -126,7 +127,7 @@ fun MyNumberIsScreen(
                 .offset(x = 35.dp, y = 330.dp)
                 .width(325.dp)
                 .height(58.dp),
-            onClick = onContinueClick
+            onClick = {onContinue(phoneNumber)}
         )
 
     }
@@ -136,10 +137,8 @@ fun MyNumberIsScreen(
 @Composable
 fun MyNumberIsScreenPreview() {
     MyNumberIsScreen(
-        onContinueClick = {},
-        onFacebookLogin = {},
-        onGoogleLogin = {},
-        onSignUpClick = {}
+        onContinue = {},
+        onBackClick = {}
     )
 }
 

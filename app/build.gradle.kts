@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
+
 }
 
 android {
@@ -72,7 +74,22 @@ dependencies {
 
 
     implementation ("androidx.compose.material3:material3:1.3.2")
-        implementation("androidx.compose.ui:ui:1.8.1")
+    implementation("androidx.compose.ui:ui:1.8.1")
+    implementation ("com.google.accompanist:accompanist-flowlayout:0.30.1")
+
+    implementation(libs.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

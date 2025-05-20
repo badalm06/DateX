@@ -19,7 +19,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.dating.datexapp.ui.common.*
 
 @Composable
-fun LookingForScreen() {
+fun LookingForScreen(
+    onBackClick: () -> Unit,
+    onContinueClick: () -> Unit
+) {
     val options = listOf(
         "A relationship",
         "Somthing casual",
@@ -56,7 +59,7 @@ fun LookingForScreen() {
                 IconButtonBox(
                     iconResId = R.drawable.back_arrow,
                     contentDescription = "Back",
-                    onClick = { /* Handle back */ }
+                    onClick = onBackClick
                 )
                 Spacer(modifier = Modifier.width(60.dp))
                 ProgressIndicator(
@@ -97,7 +100,7 @@ fun LookingForScreen() {
 
             GradientButton(
                 text = "Continue",
-                onClick = {  },
+                onClick = onContinueClick,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 32.dp)
@@ -165,5 +168,8 @@ fun OptionItem(
 @Preview(showBackground = true)
 @Composable
 fun LookingForPreview() {
-    LookingForScreen()
+    LookingForScreen(
+        onContinueClick = {},
+        onBackClick = {}
+    )
 }

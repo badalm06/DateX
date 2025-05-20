@@ -3,46 +3,24 @@ package com.dating.datexapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.dating.datexapp.ui.navigation.AppNavGraph
-import com.dating.datexapp.ui.screens.GetStartedScreen
-import com.dating.datexapp.ui.screens.LoginScreen
+import com.dating.datexapp.ui.screens.InterestScreen
 import com.dating.datexapp.ui.theme.DatexandroidappTheme
 
-//class MainActivity : ComponentActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContent {
-//            DatexandroidappTheme {
-//                Surface(color = MaterialTheme.colorScheme.background) {
-//                    val navController = rememberNavController()
-//                    AppNavGraph(navController = navController) // ⬅️ Loads your SplashScreen (Composable)
-//                }
-//            }
-//        }
-//    }
-//}
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            LoginScreen(
-                onContinueClick = { /* TODO: handle Continue */ },
-                onFacebookLogin = { /* TODO: handle Facebook Login */ },
-                onGoogleLogin = { /* TODO: handle Google Login */ },
-                onSignUpClick = { /* TODO: handle Sign Up */ }
-            )
+            DatexandroidappTheme {
+                val navController = rememberNavController()
+                AppNavGraph(navController = navController)
+            }
         }
     }
 }

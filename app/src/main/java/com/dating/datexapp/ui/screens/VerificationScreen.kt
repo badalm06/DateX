@@ -53,7 +53,7 @@ fun VerificationCodeScreen(
         IconButtonBox(
             iconResId = R.drawable.back_arrow,
             contentDescription = "Back",
-            onClick = { /* Handle back */ },
+            onClick = onBackClick,
             modifier = Modifier.offset(x = 20.dp, y = 54.dp)
         )
 

@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
@@ -17,9 +18,12 @@ import androidx.compose.ui.unit.dp
 import com.dating.datexapp.R
 
 
-@Preview(showBackground = true)
 @Composable
-fun SplashScreen() {
+fun SplashScreen(onNavigateNext: () -> Unit) {
+    LaunchedEffect(Unit) {
+        kotlinx.coroutines.delay(2000) // 2-second splash delay
+        onNavigateNext() // Navigate to next screen
+    }
     BoxWithConstraints(
         modifier = Modifier
             .fillMaxSize()
@@ -107,4 +111,10 @@ fun SplashScreen() {
                 .offset(x = screenWidth * 0.43f, y = screenHeight * 0.81f)
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SplashScreenPreview() {
+    SplashScreen(onNavigateNext = {})
 }

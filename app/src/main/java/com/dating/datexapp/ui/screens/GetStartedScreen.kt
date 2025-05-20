@@ -141,7 +141,7 @@ fun GetStartedScreen(
             modifier = Modifier
                 .width(327.dp)
                 .height(56.dp)
-                .offset(x = 24.dp, y = 674.dp),
+                .offset(x = 34.dp, y = 674.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
             shape = RoundedCornerShape(50),
             contentPadding = PaddingValues()
