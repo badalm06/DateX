@@ -80,6 +80,9 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
 
+    implementation("com.github.zj565061763:compose-wheel-picker:1.0.0-rc02")
+
+
 
 
 

@@ -3,11 +3,14 @@ package com.dating.datexapp.ui.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -22,16 +25,28 @@ import com.dating.datexapp.ui.common.IconButtonBox
 import com.dating.datexapp.ui.common.ProgressIndicator
 import com.dating.datexapp.ui.common.StatusBar
 import com.dating.datexapp.ui.common.TitleText
-
-
+import com.dating.datexapp.ui.wheelpicker.FWheelPickerState
+import com.dating.datexapp.ui.wheelpicker.FVerticalWheelPicker
+import com.dating.datexapp.ui.wheelpicker.rememberFWheelPickerState
 
 @Composable
 fun DOBScreen(
-    age: Int,
-    onAgeChange: (Int) -> Unit,
+    selectedAge: Int,
+    onAgeSelected: (Int) -> Unit,
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
+    val ageRange = (18..80).toList()
+    val pickerState = rememberFWheelPickerState(
+        initialIndex = ageRange.indexOf(selectedAge))
+
+    LaunchedEffect(pickerState.currentIndex) {
+        val index = pickerState.currentIndex
+        if (index in ageRange.indices) {
+            onAgeSelected(ageRange[index])
+        }
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -89,67 +104,62 @@ fun DOBScreen(
 
             Box(
                 modifier = Modifier
-                    .height(460.dp)
-                    .fillMaxWidth(),
-                contentAlignment = Alignment.Center
+                    .height(394.dp)
+                    .fillMaxWidth()
             ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    val agesToShow = (age - 3)..(age + 3)
-                    for (i in agesToShow) {
-                        when (i) {
-                            age - 3, age + 3 -> AgeText(
-                                text = "$i",
-                                fontSize = 28.sp,
-                                fontWeight = FontWeight.Normal,
-                                color = Color(0x73F64F8B)
-                            )
+                // Pink indicator lines
+                val lineColor = Color(0xFFF64F8B)
+                val lineThickness = 3.dp
+                val itemHeight = 77.dp
 
-                            age - 2, age + 2 -> AgeText(
-                                text = "$i",
-                                fontSize = 36.sp,
-                                fontWeight = FontWeight.Normal,
-                                color = Color(0x80F64F8B)
-                            )
+                // Top line
+                Box(
+                    Modifier
+                        .align(Alignment.Center)
+                        .offset(y = -itemHeight / 2)
+                        .width(137.dp)
+                        .height(lineThickness)
+                        .background(lineColor)
+                )
 
-                            age - 1, age + 1 -> AgeText(
-                                text = "$i",
-                                fontSize = 44.sp,
-                                fontWeight = FontWeight.Normal,
-                                color = Color(0xBFF64F8B)
-                            )
+                // Bottom line
+                Box(
+                    Modifier
+                        .align(Alignment.Center)
+                        .offset(y = itemHeight / 2)
+                        .width(137.dp)
+                        .height(lineThickness)
+                        .background(lineColor)
+                )
 
-                            age -> {
-                                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                    Box(
-                                        modifier = Modifier
-                                            .width(137.dp)
-                                            .height(3.dp)
-                                            .background(Color(0xFFF64F8B))
-                                    )
-                                    AgeText(
-                                        text = "$i",
-                                        fontSize = 64.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        color = Color(0xFFF64F8B)
-                                    )
-                                    Box(
-                                        modifier = Modifier
-                                            .width(137.dp)
-                                            .height(3.dp)
-                                            .background(Color(0xFFF64F8B))
-                                    )
-                                }
-                            }
-                        }
+                // The age picker
+                FVerticalWheelPicker(
+                    count = ageRange.size,
+                    state = pickerState,
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    itemHeight = itemHeight,
+                    unfocusedCount = 3,
+                    display = {
+                        val isFocused = pickerState.currentIndex == it
+                        val textColor = if (isFocused) Color(0xFFF64F8B) else Color(0xFFFF2D55).copy(alpha = 0.3f)
+                        val textSize = if (isFocused) 64.sp else 48.sp
+                        val fontWeight = if (isFocused) FontWeight.Bold else FontWeight.Normal
 
-                    }
-                }
+                        Text(
+                            text = ageRange[it].toString(),
+                            textAlign = TextAlign.Center,
+                            fontSize = textSize,
+                            fontWeight = fontWeight,
+                            color = textColor,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    },
+                    content = { }
+                )
             }
+       }
 
-            Spacer(modifier = Modifier.height(80.dp)) // Add some space to avoid overlap with button
-        }
-
-        // Continue Button at Bottom
         Box(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -167,30 +177,13 @@ fun DOBScreen(
     }
 }
 
-@Composable
-fun AgeText(
-    text: String,
-    fontSize: androidx.compose.ui.unit.TextUnit,
-    color: Color,
-    fontWeight: FontWeight = FontWeight.Normal
-) {
-    Text(
-        text = text,
-        fontSize = fontSize,
-        fontFamily = FontFamily(Font(R.font.manrope_regular)),
-        fontWeight = fontWeight,
-        color = color,
-        textAlign = TextAlign.Center,
-        modifier = Modifier.padding(vertical = 2.dp)
-    )
-}
 
 @Preview(showBackground = true)
 @Composable
 fun DOBScreenPreview() {
     DOBScreen(
-        age = 32,
-        onAgeChange = {},
+        selectedAge = 32,
+        onAgeSelected = {},
         onBackClick = {},
         onContinueClick = {}
     )

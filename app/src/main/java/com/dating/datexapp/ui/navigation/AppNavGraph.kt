@@ -116,8 +116,8 @@ fun AppNavGraph(navController: NavHostController) {
             var age by rememberSaveable { mutableIntStateOf(25) }
 
             DOBScreen(
-                age = age,
-                onAgeChange = { age = it },
+                selectedAge = age,
+                onAgeSelected = { age = it },
                 onBackClick = { navController.popBackStack() },
                 onContinueClick = {
                     navController.navigate(GenderScreen)
