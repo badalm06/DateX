@@ -10,6 +10,7 @@ import androidx.compose.ui.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.*
 import androidx.compose.ui.text.font.FontWeight
@@ -179,7 +180,7 @@ fun CupidArrowFilterScreen(onCloseClick: () -> Unit, onContinueClick: () -> Unit
 
                 Spacer(modifier = Modifier.weight(1f))
                 GradientButton(
-                    text = "Continue",
+                    text = "Try Again",
                     onClick = onContinueClick,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -297,24 +298,54 @@ fun SelectionChip(text: String, isSelected: Boolean, modifier: Modifier = Modifi
     }
 }
 
-
 @Composable
-fun FilterSection(title: String, value: String) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(text = title, fontSize = 16.sp, fontWeight = FontWeight.Medium, color = Color(0xFF161616))
-        Text(text = value, fontSize = 14.sp, color = Color(0xFF808080))
+fun FilterSection(
+    title: String,
+    value: String,
+    icon: Painter? = null,
+    startPadding: Dp = 0.dp // Optional start padding
+) {
+    Column(modifier = Modifier.padding(start = startPadding)) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                icon?.let {
+                    Image(
+                        painter = it,
+                        contentDescription = null,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                }
+                Text(
+                    text = title,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color(0xFF161616)
+                )
+            }
+
+            Text(
+                text = value,
+                fontSize = 14.sp,
+                color = Color(0xFF808080)
+            )
+        }
+        Spacer(modifier = Modifier.height(12.dp))
     }
-    Spacer(modifier = Modifier.height(12.dp))
 }
+
+
 
 @Composable
 fun FilterSlider(
     activeWidth: Dp,
     startThumbOffsetX: Dp,
-    endThumbOffsetX: Dp
+    endThumbOffsetX: Dp,
+    startPadding: Dp = 0.dp
 ) {
     Box(
         modifier = Modifier
