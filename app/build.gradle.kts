@@ -82,6 +82,9 @@ dependencies {
 
     implementation("com.github.zj565061763:compose-wheel-picker:1.0.0-rc02")
 
+    implementation ("com.google.accompanist:accompanist-systemuicontroller:0.36.0")
+
+
 
 
 

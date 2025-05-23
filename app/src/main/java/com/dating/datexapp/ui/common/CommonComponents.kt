@@ -148,7 +148,7 @@ fun StatusBar(modifier: Modifier = Modifier) {
             .padding(top = 7.33.dp, start = 21.dp, end = 21.dp)
             .height(21.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
             painter = painterResource(R.drawable.ic_time),

@@ -105,7 +105,7 @@ fun InterestScreen(
                 )
 
                 items.forEach { (label, icon, offset) ->
-                    InterestChip(
+                    InterestChip1(
                         text = label,
                         icon = icon,
                         isSelected = selectedInterests.contains(label),
@@ -138,7 +138,7 @@ fun InterestScreen(
 }
 
 @Composable
-fun InterestChip(
+fun InterestChip1(
     text: String,
     icon: Int,
     isSelected: Boolean,
