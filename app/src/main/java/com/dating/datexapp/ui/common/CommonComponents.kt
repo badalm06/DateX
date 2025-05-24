@@ -145,7 +145,7 @@ fun StatusBar(modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(top = 7.33.dp, start = 21.dp, end = 21.dp)
+            .padding(top = 7.33.dp, start = 18.dp, end = 21.dp)
             .height(21.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
