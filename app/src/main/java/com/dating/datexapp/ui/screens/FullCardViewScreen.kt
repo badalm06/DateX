@@ -62,7 +62,7 @@ fun FullCardScreen() {
                     .fillMaxWidth()
                     .height(800.dp)
             )
-        StatusBar()
+        StatusBarChat()
             IconButtonBox(
             iconResId = R.drawable.back_arrow,
             contentDescription = "Back",
