@@ -103,7 +103,7 @@ fun NotificationScreen() {
             painter = painterResource(id = R.drawable.curve4),
             contentDescription = "Curve Background",
             modifier = Modifier
-                .size(width = 375.dp, height = 308.dp)
+                .size(width = 375.dp, height = 408.dp)
                 .align(Alignment.BottomCenter)
         )
     }
