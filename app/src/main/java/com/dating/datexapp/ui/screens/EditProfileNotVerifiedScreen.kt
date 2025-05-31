@@ -40,11 +40,15 @@ import com.dating.datexapp.ui.common.TitleText
 import java.nio.file.Files.size
 
 @Composable
-fun EditProfileNotVerifiedScreen() {
+fun EditProfileNotVerifiedScreen(
+    onDeletePhotoClick: () -> Unit,
+    onAnyOtherClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0x80000000))
+            .clickable{onAnyOtherClick()}
     ) {
         Column(
             modifier = Modifier
@@ -272,7 +276,8 @@ fun EditProfileNotVerifiedScreen() {
                 fontFamily = FontFamily(Font(R.font.manrope_regular)),
                 fontWeight = FontWeight.W400,
                 color = Color(0xFF161616),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                modifier = Modifier.clickable{onDeletePhotoClick()}
             )
 
             Spacer(modifier = Modifier.height(17.dp))
@@ -354,5 +359,8 @@ fun UploadBox1(plusIcon: Painter, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun EditProfileNotVerifiedScreenPreview() {
-    EditProfileNotVerifiedScreen()
+    EditProfileNotVerifiedScreen(
+        onDeletePhotoClick = {},
+        onAnyOtherClick = {}
+    )
 }

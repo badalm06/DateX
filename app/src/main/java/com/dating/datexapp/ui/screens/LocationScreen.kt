@@ -2,6 +2,7 @@ package com.dating.datexapp.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,7 +23,10 @@ import com.dating.datexapp.ui.common.GradientButton
 import com.dating.datexapp.ui.common.StatusBar
 
 @Composable
-fun LocationScreen() {
+fun LocationScreen(
+    onAllowAccessClick: () -> Unit,
+    onEnterManuallyClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -81,7 +85,7 @@ fun LocationScreen() {
             // Gradient Button
             GradientButton(
                 text = "Allow Location Access",
-                onClick = {  },
+                onClick = onAllowAccessClick,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp)
@@ -95,8 +99,12 @@ fun LocationScreen() {
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Normal,
                 color = Color(0xFFF64F8B),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .clickable { onEnterManuallyClick() }
+                    .padding(top = 16.dp) // optional spacing
             )
+
         }
     }
 }
@@ -104,5 +112,8 @@ fun LocationScreen() {
 @Preview(showBackground = true)
 @Composable
 fun LocationScreenPreview() {
-    LocationScreen()
+    LocationScreen(
+        onAllowAccessClick = {},
+        onEnterManuallyClick = {}
+    )
 }

@@ -31,7 +31,9 @@ import com.dating.datexapp.ui.common.StatusBar
 import com.dating.datexapp.ui.common.TitleText
 
 @Composable
-fun VerificationProcessingScreen() {
+fun VerificationProcessingScreen(
+    onDemoImgClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .zIndex(1f)
@@ -113,7 +115,7 @@ fun VerificationProcessingScreen() {
                     .offset(x = 26.dp, y = (-60).dp)
                     .clip(RoundedCornerShape(16.dp))
             ) {
-                Image(painter = painterResource(id = R.drawable.demo_image), contentDescription = null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
+                Image(painter = painterResource(id = R.drawable.demo_image), contentDescription = null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize().clickable{onDemoImgClick()})
                 Box(modifier = Modifier.matchParentSize())
             }
 
@@ -322,5 +324,7 @@ fun FilterOption(label: String, iconRes: Int) {
 @Preview(showBackground = true)
 @Composable
 fun VerificationProcessingScreenPreview() {
-    VerificationProcessingScreen()
+    VerificationProcessingScreen(
+        onDemoImgClick = {}
+    )
 }

@@ -5,18 +5,14 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -28,7 +24,10 @@ import com.dating.datexapp.ui.common.IconButtonBox
 import com.dating.datexapp.ui.common.StatusBar
 
 @Composable
-fun LocationSettingsScreen(onContinueClick: () -> Unit = {}) {
+fun LocationSettingsScreen(
+    onContinueClick: () -> Unit,
+    onBackClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -52,7 +51,7 @@ fun LocationSettingsScreen(onContinueClick: () -> Unit = {}) {
                     IconButtonBox(
                         iconResId = R.drawable.back_arrow,
                         contentDescription = "Back",
-                        onClick = { }
+                        onClick = { onBackClick() }
                     )
                     Text(
                         text = "Location Settings",
@@ -196,5 +195,8 @@ fun LocationItem(title: String, address: String) {
 @Preview(showBackground = true)
 @Composable
 fun LocationSettingsScreenPreview() {
-    LocationSettingsScreen()
+    LocationSettingsScreen(
+        onBackClick = {},
+        onContinueClick = {}
+    )
 }

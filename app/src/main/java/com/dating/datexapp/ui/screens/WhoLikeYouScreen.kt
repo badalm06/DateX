@@ -3,11 +3,11 @@ package com.dating.datexapp.ui.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.BlurEffect
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
@@ -31,7 +30,12 @@ import com.dating.datexapp.ui.common.StatusBar
 
 @Composable
 fun WhoLikeYouScreen(
-    onGetPremiumClick: () -> Unit
+    onGetPremiumClick: () -> Unit,
+    onBottomMainScreen: () -> Unit,
+    onBottomHeartClick: () -> Unit,
+    onChatClick: () -> Unit,
+    onProfileClick: () -> Unit,
+    onWhomYouLikeClick:() -> Unit
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
 
@@ -52,7 +56,7 @@ fun WhoLikeYouScreen(
             )
 
             // Tabs with line between
-            TopTabs()
+            TopTabs(onWhomYouLikeClick = onWhomYouLikeClick)
 
             Spacer(modifier = Modifier.height(12.dp))
 
@@ -121,10 +125,10 @@ fun WhoLikeYouScreen(
                 .align(Alignment.BottomCenter),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            StoryFrame(R.drawable.llr_btm_img, Color.Transparent)
-            StoryFrame(R.drawable.llr_heart, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img3, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent)
+            StoryFrame(R.drawable.llr_btm_img, Color.Transparent, true, modifier = Modifier.clickable{onBottomMainScreen()})
+            StoryFrame(R.drawable.llr_heart, Color.Transparent, modifier = Modifier.clickable{onBottomHeartClick()})
+            StoryFrame(R.drawable.ca_btm_img3, Color.Transparent, modifier = Modifier.clickable{onChatClick()})
+            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent, modifier = Modifier.clickable{onProfileClick()})
         }
     }
 }
@@ -193,7 +197,9 @@ fun BottomNavIcon(imageRes: Int) {
 }
 
 @Composable
-fun TopTabs() {
+fun TopTabs(
+    onWhomYouLikeClick: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth(),
@@ -216,7 +222,10 @@ fun TopTabs() {
         Text(
             text = "Whom you like",
             color = Color.Gray,
-            fontSize = 16.sp
+            fontSize = 16.sp,
+            modifier = Modifier
+                .clickable{onWhomYouLikeClick()}
+
         )
     }
 
@@ -233,6 +242,11 @@ fun TopTabs() {
 @Composable
 fun WhoLikeYouScreenPreview() {
     WhoLikeYouScreen(
-        onGetPremiumClick = { /* Do something */ }
+        onGetPremiumClick = {  },
+        onBottomMainScreen = {},
+        onBottomHeartClick = {},
+        onChatClick = {},
+        onProfileClick = {},
+        onWhomYouLikeClick = {}
     )
 }

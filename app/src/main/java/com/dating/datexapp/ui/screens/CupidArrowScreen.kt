@@ -3,6 +3,7 @@ package com.dating.datexapp.ui.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,7 +27,15 @@ import com.dating.datexapp.ui.common.StatusBar
 
 
 @Composable
-fun CupidArrowScreen() {
+fun CupidArrowScreen(
+    onMainImageClick: () -> Unit,
+    onLikeClick: () -> Unit,
+    onBottomMainClick: () -> Unit,
+    onBottomHeartClick: () -> Unit,
+    onChatClick: () -> Unit,
+    onProfileClick: () -> Unit,
+    onFilterClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -50,15 +59,15 @@ fun CupidArrowScreen() {
                 .fillMaxWidth()
                 .background(Color.White)
                 .height(55.dp)
-            .align(Alignment.BottomCenter),
+                .align(Alignment.BottomCenter),
             horizontalArrangement = Arrangement.SpaceEvenly
-        )
-        {
-            StoryFrame(R.drawable.ca_btm_img1, Color.Transparent, true)
-            StoryFrame(R.drawable.ca_btm_img2, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img3, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent)
+        ) {
+            StoryFrame(R.drawable.ca_btm_img1, Color.Transparent, true, modifier = Modifier.clickable { onBottomMainClick() })
+            StoryFrame(R.drawable.ca_btm_img2, Color.Transparent, modifier = Modifier.clickable { onBottomHeartClick() })
+            StoryFrame(R.drawable.ca_btm_img3, Color.Transparent, modifier = Modifier.clickable { onChatClick() })
+            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent, modifier = Modifier.clickable { onProfileClick() })
         }
+
         Image(
             painter = painterResource(id = R.drawable.logo),
             contentDescription = "Logo",
@@ -129,6 +138,8 @@ fun CupidArrowScreen() {
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
+                        .clickable { onMainImageClick() }
+
                 )
             }
         }
@@ -169,6 +180,8 @@ fun CupidArrowScreen() {
                 painter = painterResource(id = R.drawable.like),
                 contentDescription = null,
                 modifier = Modifier.size(41.2.dp)
+                    .clickable { onLikeClick() }
+
             )
         }
 
@@ -242,6 +255,7 @@ fun CupidArrowScreen() {
                 .offset(x = 339.dp, y = 49.dp)
                 .size(32.dp)
                 .clip(CircleShape)
+                .clickable{onFilterClick()}
                 .background(Color(0xFFFFDBE0)),
             contentAlignment = Alignment.Center
         ) {
@@ -255,9 +269,14 @@ fun CupidArrowScreen() {
 }
 
 @Composable
-fun StoryFrame(imageRes: Int, backgroundColor: Color, hasBorder: Boolean = false) {
+fun StoryFrame(
+    imageRes: Int,
+    backgroundColor: Color,
+    hasBorder: Boolean = false,
+    modifier: Modifier = Modifier
+) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .size(width = 94.dp, height = 55.dp)
             .clip(RoundedCornerShape(10.dp))
             .background(backgroundColor)
@@ -271,6 +290,7 @@ fun StoryFrame(imageRes: Int, backgroundColor: Color, hasBorder: Boolean = false
         )
     }
 }
+
 
 @Composable
 fun StoryItem(
@@ -307,5 +327,13 @@ fun StoryItem(
 @Preview(showBackground = true)
 @Composable
 fun CupidArrowScreenPreview() {
-    CupidArrowScreen()
+    CupidArrowScreen(
+        onMainImageClick = {},
+        onLikeClick = {},
+        onBottomMainClick = {},
+        onBottomHeartClick = {},
+        onChatClick = {},
+        onProfileClick = {},
+        onFilterClick = {}
+    )
 }

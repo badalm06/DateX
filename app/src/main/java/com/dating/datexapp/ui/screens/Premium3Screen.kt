@@ -15,11 +15,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.dating.datexapp.R
 import com.dating.datexapp.ui.common.*
+import com.dating.datexapp.ui.navigation.EditProfileScreen
+import com.dating.datexapp.ui.navigation.IPhone13Mini5Screen
 
 @Composable
-fun Premium3Screen(onBackClick: () -> Unit = {}) {
+fun Premium3Screen(
+    navController: NavController,
+    onBackClick: () -> Unit = {},
+    onBottomMainClick: () -> Unit,
+    onBottomHeartClick: () -> Unit,
+    onChatClick: () -> Unit,
+    onProfileClick: () -> Unit,
+    onFirstDownArrowClick: () -> Unit,
+    onSecondDownArrowClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -45,7 +58,7 @@ fun Premium3Screen(onBackClick: () -> Unit = {}) {
                 IconButtonBox(
                     iconResId = R.drawable.back_arrow,
                     contentDescription = "Back",
-                    onClick = onBackClick,
+                    onClick = { onBackClick() },
                 )
                 Spacer(modifier = Modifier.width(75.dp))
                 Text(
@@ -56,7 +69,7 @@ fun Premium3Screen(onBackClick: () -> Unit = {}) {
                 )
             }
 
-            ProfileHeader()
+            ProfileHeader(onEditButtonClick = {})
 
             Row(
                 modifier = Modifier
@@ -74,7 +87,8 @@ fun Premium3Screen(onBackClick: () -> Unit = {}) {
                     ),
                     backgroundGradient = Brush.verticalGradient(
                         listOf(Color(0xFFADDCFF), Color(0xFFEAF6FF))
-                    )
+                    ),
+                    onGetClick = {navController.navigate(IPhone13Mini5Screen)}
                 )
 
                 GradientBorderBox(
@@ -86,7 +100,8 @@ fun Premium3Screen(onBackClick: () -> Unit = {}) {
                     ),
                     backgroundGradient = Brush.verticalGradient(
                         listOf(Color(0xFFFFBEF9), Color(0xFFFFF1FF), Color(0xFFFFF1FF))
-                    )
+                    ),
+                    onGetClick = {navController.navigate(IPhone13Mini5Screen)}
                 )
             }
 
@@ -103,7 +118,8 @@ fun Premium3Screen(onBackClick: () -> Unit = {}) {
                 isDarkText = true,
                 modifier = Modifier
                     .width(360.dp)
-                    .height(160.dp)
+                    .height(180.dp)
+                    .clickable { onFirstDownArrowClick() }
             )
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -118,7 +134,8 @@ fun Premium3Screen(onBackClick: () -> Unit = {}) {
                 isDarkText = false,
                 modifier = Modifier
                     .width(360.dp)
-                    .height(160.dp)
+                    .height(180.dp)
+                    .clickable { onSecondDownArrowClick() }
             )
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -136,10 +153,10 @@ fun Premium3Screen(onBackClick: () -> Unit = {}) {
                 .align(Alignment.BottomCenter),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            StoryFrame(R.drawable.ca_btm_img1, Color.Transparent, true)
-            StoryFrame(R.drawable.ca_btm_img2, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img3, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent)
+            StoryFrame(R.drawable.llr_btm_img, Color.Transparent, true, modifier = Modifier.clickable{onBottomMainClick()})
+            StoryFrame(R.drawable.ca_btm_img2, Color.Transparent, modifier = Modifier.clickable{onBottomHeartClick()})
+            StoryFrame(R.drawable.chat_btm_img3, Color.Transparent, modifier = Modifier.clickable{onChatClick()})
+            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent, modifier = Modifier.clickable{onProfileClick()})
         }
     }
 }
@@ -229,5 +246,14 @@ fun ComparisonTable1() {
 @Preview(showBackground = true)
 @Composable
 fun Premium3ScreenPreview() {
-    Premium3Screen()
+    val navController = rememberNavController()
+    Premium3Screen(
+        navController = navController,
+        onBottomMainClick = {},
+        onBottomHeartClick = {},
+        onChatClick = {},
+        onProfileClick = {},
+        onFirstDownArrowClick = {},
+        onSecondDownArrowClick = {}
+    )
 }

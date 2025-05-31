@@ -36,7 +36,14 @@ import com.dating.datexapp.ui.common.StatusBar
 
 
 @Composable
-fun WhomYouLikeScreen() {
+fun WhomYouLikeScreen(
+    onBottomMainScreen: () -> Unit,
+    onBottomHeartClick: () -> Unit,
+    onChatClick: () -> Unit,
+    onProfileClick: () -> Unit,
+    onWhoLikeYouClick: () -> Unit,
+    onLikeClick: () -> Unit
+) {
     Box(modifier = Modifier.fillMaxSize().background(Color.White)) {
         Column(modifier = Modifier.fillMaxSize()) {
             StatusBar()
@@ -47,7 +54,7 @@ fun WhomYouLikeScreen() {
                     .size(121.dp)
                     .align(Alignment.CenterHorizontally)
             )
-            TopTabs1()
+            TopTabs1(onWhoLikeYouClick = onWhoLikeYouClick)
             ProfileGrid()
             Spacer(modifier = Modifier.weight(1f))
             // Remove BottomNavBar from here
@@ -56,13 +63,20 @@ fun WhomYouLikeScreen() {
         BottomNavBar(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            onBottomMainScreen = onBottomMainScreen,
+            onBottomHeartClick = onBottomHeartClick,
+            onChatClick = onChatClick,
+            onProfileClick = onProfileClick
         )
+
     }
 }
 
 @Composable
-fun TopTabs1() {
+fun TopTabs1(
+    onWhoLikeYouClick: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth(),
@@ -71,7 +85,8 @@ fun TopTabs1() {
         Text(
             text = "Who like you",
             color = Color.Gray,
-            fontSize = 16.sp
+            fontSize = 16.sp,
+            modifier = Modifier.clickable { onWhoLikeYouClick() }
             )
         Image(
             painter = painterResource(id = R.drawable.line1),
@@ -97,18 +112,6 @@ fun TopTabs1() {
     )
 }
 
-fun Modifier.drawBottomLine(): Modifier = this.then(
-    Modifier.drawBehind {
-        val strokeWidth = 4.dp.toPx()
-        val y = size.height
-        drawLine(
-            color = Color.Black,
-            start = Offset(0f, y),
-            end = Offset(size.width, y),
-            strokeWidth = strokeWidth
-        )
-    }
-)
 
 @Composable
 fun ProfileGrid() {
@@ -122,13 +125,13 @@ fun ProfileGrid() {
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(dummyProfiles.size) {
-            ProfileCard(name = dummyProfiles[it])
+            ProfileCard(name = dummyProfiles[it], onLikeClick = {})
         }
     }
 }
 
 @Composable
-fun ProfileCard(name: String) {
+fun ProfileCard(name: String, onLikeClick: () -> Unit) {
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
@@ -184,6 +187,7 @@ fun ProfileCard(name: String) {
                     .size(39.dp)
                     .clip(CircleShape)
                     .background(Color(0xFFF64F8B))
+                    .then(Modifier.clickable { onLikeClick() })
                     .padding(10.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -212,17 +216,21 @@ fun ProfileCard(name: String) {
 }
 
 @Composable
-fun BottomNavBar(modifier: Modifier = Modifier) {
+fun BottomNavBar(modifier: Modifier = Modifier,
+                 onBottomMainScreen: () -> Unit,
+                 onBottomHeartClick: () -> Unit,
+                 onChatClick: () -> Unit,
+                 onProfileClick: () -> Unit) {
     Row(
         modifier = modifier
             .background(Color.White),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        StoryFrame(R.drawable.llr_btm_img, Color.Transparent)
-        StoryFrame(R.drawable.llr_heart, Color.Transparent)
-        StoryFrame(R.drawable.ca_btm_img3, Color.Transparent)
-        StoryFrame(R.drawable.ca_btm_img4, Color.Transparent)
+        StoryFrame(R.drawable.llr_btm_img, Color.Transparent, true, modifier = Modifier.clickable{onBottomMainScreen()})
+        StoryFrame(R.drawable.llr_heart, Color.Transparent, modifier = Modifier.clickable{onBottomHeartClick()})
+        StoryFrame(R.drawable.ca_btm_img3, Color.Transparent, modifier = Modifier.clickable{onChatClick()})
+        StoryFrame(R.drawable.ca_btm_img4, Color.Transparent, modifier = Modifier.clickable{onProfileClick()})
     }
 }
 
@@ -231,5 +239,12 @@ fun BottomNavBar(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun WhomYouLikeScreenPreview() {
-    WhomYouLikeScreen()
+    WhomYouLikeScreen(
+        onBottomMainScreen = {},
+        onBottomHeartClick = {},
+        onChatClick = {},
+        onProfileClick = {},
+        onWhoLikeYouClick = {},
+        onLikeClick = {}
+    )
 }

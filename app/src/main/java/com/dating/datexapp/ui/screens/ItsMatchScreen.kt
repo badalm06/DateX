@@ -3,6 +3,7 @@ package com.dating.datexapp.ui.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,7 +27,10 @@ import com.dating.datexapp.ui.common.GradientButton
 import com.dating.datexapp.ui.common.StatusBar
 
 @Composable
-fun ItsMatchScreen() {
+fun ItsMatchScreen(
+    onHelloClick: () -> Unit,
+    onNotNowClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -108,7 +112,11 @@ fun ItsMatchScreen() {
                 .absoluteOffset(x = 124.33.dp, y = 445.31.dp)
                 .size(width = 130.23.dp, height = 38.26.dp)
                 .background(Color.White, RoundedCornerShape(22.07.dp))
-                .border(width = 2.dp, color = Color(0xFF00C566), shape = RoundedCornerShape(22.07.dp)),
+                .border(
+                    width = 2.dp,
+                    color = Color(0xFF00C566),
+                    shape = RoundedCornerShape(22.07.dp)
+                ),
             contentAlignment = Alignment.Center
         ) {
             Text(
@@ -150,6 +158,7 @@ fun ItsMatchScreen() {
                 .padding(horizontal = 32.dp)
                 .height(56.dp)
                 .offset(y = 622.dp)
+                .clickable { onHelloClick }
         )
 
         // "Not Now" Text
@@ -159,6 +168,7 @@ fun ItsMatchScreen() {
             color = Color(0xFF161616),
             modifier = Modifier
                 .absoluteOffset(x = 112.dp, y = 693.dp)
+                .clickable { onNotNowClick }
                 .width(145.dp),
             textAlign = TextAlign.Center,
             letterSpacing = 0.3.sp,
@@ -172,5 +182,8 @@ fun ItsMatchScreen() {
 @Preview(showBackground = true)
 @Composable
 fun ItsMatchScreenPreview() {
-    ItsMatchScreen()
+    ItsMatchScreen(
+        onHelloClick = {},
+        onNotNowClick = {}
+    )
 }

@@ -4,6 +4,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -48,7 +49,14 @@ import com.dating.datexapp.ui.common.StatusBar
 
 
 @Composable
-fun FullCardScreen() {
+fun FullCardScreen(
+    onMainImageClick: () -> Unit,
+    onBackClick: () -> Unit,
+    onBottomHeartClick: () -> Unit,
+    onChatClick: () -> Unit,
+    onProfileClick: () -> Unit,
+    onLikeClick: () -> Unit
+) {
 
     Box(
         modifier = Modifier
@@ -66,7 +74,7 @@ fun FullCardScreen() {
             IconButtonBox(
             iconResId = R.drawable.back_arrow,
             contentDescription = "Back",
-            onClick = {},
+            onClick = {onBackClick()},
             modifier = Modifier.offset(y = 48.dp, x = 16.dp),
             tint = Color.White
         )
@@ -81,7 +89,7 @@ fun FullCardScreen() {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .offset(y = (-55).dp) // negative offset to overlap image
+                    .offset(y = (-55).dp)
                     .clip(RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp))
                     .background(
                         brush = Brush.verticalGradient(
@@ -101,9 +109,9 @@ fun FullCardScreen() {
                             .verticalScroll(scrollState)
                     ) {
                         Spacer(modifier = Modifier.height(8.dp))
-                        ProfileCardContent()
+                        ProfileCardContent(onChatClick)
                         Spacer(modifier = Modifier.height(8.dp))
-                        ActionButtons()
+                        ActionButtons(onBottomHeartClick)
 
                     }
                 }
@@ -119,17 +127,19 @@ fun FullCardScreen() {
                 .height(55.dp),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            StoryFrame(R.drawable.ca_btm_img1, Color.Transparent, true)
-            StoryFrame(R.drawable.ca_btm_img2, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img3, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent)
+            StoryFrame(R.drawable.ca_btm_img1, Color.Transparent, true, modifier = Modifier.clickable{onBackClick()})
+            StoryFrame(R.drawable.ca_btm_img2, Color.Transparent, modifier = Modifier.clickable{onBottomHeartClick()})
+            StoryFrame(R.drawable.ca_btm_img3, Color.Transparent, modifier = Modifier.clickable{onChatClick()})
+            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent, modifier = Modifier.clickable{onProfileClick()})
         }
     }
 }
 
 
 @Composable
-fun ProfileCardContent() {
+fun ProfileCardContent(
+    onChatClick: () -> Unit
+) {
     Column(modifier = Modifier.padding(horizontal = 4.dp)) {
         Row(
             verticalAlignment = Alignment.CenterVertically
@@ -147,14 +157,15 @@ fun ProfileCardContent() {
                 modifier = Modifier
                     .size(30.dp)
                     .clip(CircleShape)
-                    .background(Color(0xFFF64F8B)), // Primary pink color
+                    .clickable { onChatClick() }
+                    .background(Color(0xFFF64F8B)),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.message_logo),
                     contentDescription = "Message Icon",
                     tint = Color.White,
-                    modifier = Modifier.size(16.dp) // size inside the ellipse
+                    modifier = Modifier.size(16.dp)
                 )
             }
         }
@@ -334,7 +345,9 @@ fun ProfileTagWrap(
 
 
 @Composable
-fun ActionButtons() {
+fun ActionButtons(
+    onLikeClick: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -363,6 +376,7 @@ fun ActionButtons() {
                 .size(80.dp)
                 .clip(CircleShape)
                 .background(Color(0xFFF64F8B))
+                .clickable{onLikeClick}
                 .padding(20.dp),
             contentAlignment = Alignment.Center
         ) {
@@ -439,7 +453,9 @@ fun ProfileTag(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ProfileImageGrid(imageResList: List<Int>) {
+fun ProfileImageGrid(
+    imageResList: List<Int>,
+) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
         modifier = Modifier
@@ -503,8 +519,15 @@ fun InterestChip2(
 
 @Preview(showBackground = true)
 @Composable
-fun FullCardScreenScreen() {
-    FullCardScreen()
+fun FullCardScreenPreview() {
+    FullCardScreen(
+        onMainImageClick = {},
+        onBackClick = {},
+        onBottomHeartClick = {},
+        onChatClick = {},
+        onProfileClick = {},
+        onLikeClick = {}
+    )
 }
 
 

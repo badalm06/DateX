@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -25,7 +26,13 @@ import com.dating.datexapp.R
 import com.dating.datexapp.ui.common.StatusBar
 
 @Composable
-fun ChatsScreen() {
+fun ChatsScreen(
+    onBottomMainClick: () -> Unit,
+    onBottomHeartClick: () -> Unit,
+    onChatClick: () -> Unit,
+    onProfileClick: () -> Unit,
+    onPartiChatClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -111,12 +118,12 @@ fun ChatsScreen() {
 
             // Chats
             Column(modifier = Modifier.padding(horizontal = 16.dp)) {
-                ChatItem("Kristin Watson", "You: Hii", "03:16 PM", R.drawable.chat_img1, true)
-                ChatItem("Cody Fisher", "Wanna go for a date💞", "11:44 AM", R.drawable.chat_img2, true)
-                ChatItem("Jenny Wilson", "Hey What’s up, long time...", "Yesterday", R.drawable.chat_img3, false)
-                ChatItem("Brooklyn Simmons", "Typing...", "May 29", R.drawable.chat_img4, true)
-                ChatItem("Floyd Miles", "I'll be there in 2 mins", "May 16", R.drawable.chat_img5, true)
-                ChatItem("Jane Cooper", "Hii", "April 24", R.drawable.chat_img6, true)
+                ChatItem("Kristin Watson", "You: Hii", "03:16 PM", R.drawable.chat_img1, true, onPartiChatClick)
+                ChatItem("Cody Fisher", "Wanna go for a date💞", "11:44 AM", R.drawable.chat_img2, true, onPartiChatClick)
+                ChatItem("Jenny Wilson", "Hey What’s up, long time...", "Yesterday", R.drawable.chat_img3, false, onPartiChatClick)
+                ChatItem("Brooklyn Simmons", "Typing...", "May 29", R.drawable.chat_img4, true, onPartiChatClick)
+                ChatItem("Floyd Miles", "I'll be there in 2 mins", "May 16", R.drawable.chat_img5, true, onPartiChatClick)
+                ChatItem("Jane Cooper", "Hii", "April 24", R.drawable.chat_img6, true, onPartiChatClick)
 
             }
         }
@@ -130,10 +137,10 @@ fun ChatsScreen() {
                 .align(Alignment.BottomCenter),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            StoryFrame(R.drawable.llr_btm_img, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img2, Color.Transparent)
-            StoryFrame(R.drawable.chat_btm_img3, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent)
+            StoryFrame(R.drawable.llr_btm_img, Color.Transparent, true, modifier = Modifier.clickable{onBottomMainClick()})
+            StoryFrame(R.drawable.ca_btm_img2, Color.Transparent, modifier = Modifier.clickable{onBottomHeartClick()})
+            StoryFrame(R.drawable.chat_btm_img3, Color.Transparent, modifier = Modifier.clickable{onChatClick()})
+            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent, modifier = Modifier.clickable{onProfileClick()})
         }
     }
 }
@@ -238,10 +245,11 @@ fun MatchItem(
 }
 
 @Composable
-fun ChatItem(name: String, message: String, time: String, imageRes: Int, online: Boolean) {
+fun ChatItem(name: String, message: String, time: String, imageRes: Int, online: Boolean, onPartiChatClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable{onPartiChatClick()}
             .padding(vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -298,5 +306,11 @@ fun ChatItem(name: String, message: String, time: String, imageRes: Int, online:
 @Preview(showBackground = true)
 @Composable
 fun ChatsScreenPreview() {
-    ChatsScreen()
+    ChatsScreen(
+        onBottomMainClick = {},
+        onBottomHeartClick = {},
+        onChatClick = {},
+        onProfileClick = {},
+        onPartiChatClick = {}
+    )
 }

@@ -23,7 +23,11 @@ import com.dating.datexapp.ui.common.StatusBar
 
 
 @Composable
-fun CupidArrowFilterScreen(onCloseClick: () -> Unit, onContinueClick: () -> Unit) {
+fun CupidArrowFilterScreen(
+    onCloseClick: () -> Unit,
+    onTryAgainClick: () -> Unit,
+    onAdvanceFilterClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -165,7 +169,7 @@ fun CupidArrowFilterScreen(onCloseClick: () -> Unit, onContinueClick: () -> Unit
 
                 Spacer(modifier = Modifier.height(30.dp))
 
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Row(modifier = Modifier.fillMaxWidth().clickable{onAdvanceFilterClick()}, horizontalArrangement = Arrangement.SpaceBetween) {
                     Text("Advance Filters", fontSize = 16.sp, fontWeight = FontWeight.Medium, color = Color(0xFF161616))
                     Icon(
                         painter = painterResource(id = R.drawable.ic_next),
@@ -181,7 +185,7 @@ fun CupidArrowFilterScreen(onCloseClick: () -> Unit, onContinueClick: () -> Unit
                 Spacer(modifier = Modifier.weight(1f))
                 GradientButton(
                     text = "Try Again",
-                    onClick = onContinueClick,
+                    onClick = onTryAgainClick,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 32.dp)
@@ -200,7 +204,7 @@ fun CupidArrowFilterScreen(onCloseClick: () -> Unit, onContinueClick: () -> Unit
                 .clip(RoundedCornerShape(24.dp))
                 .background(Color(0x14F64F8B))
                 .border(1.dp, Color(0x26F64F8B), RoundedCornerShape(24.dp))
-                .clickable(onClick = onCloseClick),
+                .clickable{onCloseClick()},
             contentAlignment = Alignment.Center
         ) {
             Icon(painter = painterResource(id = R.drawable.ic_close), contentDescription = null, tint = Color(0xFF161616), modifier = Modifier.size(12.dp))
@@ -435,6 +439,7 @@ fun StoryItem1(
 fun CupitArrowFilerScreenPreview() {
     CupidArrowFilterScreen(
         onCloseClick = {},
-        onContinueClick = {}
+        onTryAgainClick = {},
+        onAdvanceFilterClick = {}
     )
 }

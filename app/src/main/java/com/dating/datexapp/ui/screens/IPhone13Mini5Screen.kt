@@ -33,11 +33,15 @@ import com.dating.datexapp.ui.common.IconButtonBox
 import com.dating.datexapp.ui.common.StatusBar
 
 @Composable
-fun IPhone13Mini5Screen() {
+fun IPhone13Mini5Screen(
+    onButtonClick: () -> Unit,
+    onAnyOtherClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0x80000000))
+            .clickable{onAnyOtherClick()}
     ) {
         StatusBar()
 
@@ -174,7 +178,7 @@ fun IPhone13Mini5Screen() {
                                 listOf(Color(0xFFFF5858), Color(0xFFFF1681))
                             )
                         )
-                        .clickable { }
+                        .clickable { onButtonClick()}
                         .shadow(elevation = 4.dp, shape = RoundedCornerShape(30.dp)),
                     contentAlignment = Alignment.Center
                 ) {
@@ -183,7 +187,7 @@ fun IPhone13Mini5Screen() {
                         modifier = Modifier
                             .width(337.dp)
                             .height(50.dp),
-                        onClick = { }
+                        onClick = {onButtonClick()}
                     )
 
                 }
@@ -198,7 +202,7 @@ fun IPhone13Mini5Screen() {
                         .clip(RoundedCornerShape(30.dp))
                         .background(Color(0x1FFF006B))
                         .border(1.dp, Color(0x4DF64F8B), shape = RoundedCornerShape(30.dp))
-                        .clickable { },
+                        .clickable { onButtonClick() },
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
@@ -401,5 +405,8 @@ fun GradientBorderBox1(
 @Preview(showBackground = true)
 @Composable
 fun PreviewIPhone13Mini5Screen() {
-    IPhone13Mini5Screen()
+    IPhone13Mini5Screen(
+        onButtonClick = {},
+        onAnyOtherClick = {}
+    )
 }

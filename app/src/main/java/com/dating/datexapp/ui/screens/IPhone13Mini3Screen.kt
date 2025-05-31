@@ -3,6 +3,7 @@ package com.dating.datexapp.ui.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -29,7 +30,9 @@ import androidx.compose.ui.unit.*
 import com.dating.datexapp.R
 
 @Composable
-fun IPhone13Mini3Screen() {
+fun IPhone13Mini3Screen(
+    onBackClick: () -> Unit
+) {
     val messages = listOf(
         Message("Cody Fisher", "Hello", "10:31 AM", isMine = false),
         Message("Momy Doy", "Hi", "10:38 AM", isMine = true),
@@ -46,7 +49,7 @@ fun IPhone13Mini3Screen() {
             .fillMaxSize()
             .background(Color(0xFFFFFCF9))
     ) {
-        TopBar()
+        TopBar(onBackClick)
 
         Column(modifier = Modifier
             .fillMaxSize()
@@ -109,7 +112,9 @@ fun IPhone13Mini3Screen() {
 }
 
 @Composable
-fun TopBar() {
+fun TopBar(
+    onBackClick: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -128,7 +133,9 @@ fun TopBar() {
             Icon(
                 imageVector = Icons.Default.ArrowBack,
                 contentDescription = "Back",
-                tint = Color.White
+                tint = Color.White,
+                modifier = Modifier.clickable{onBackClick}
+
             )
 
             Spacer(modifier = Modifier.width(10.dp))
@@ -371,5 +378,7 @@ data class Message(
 @Preview(showBackground = true)
 @Composable
 fun IPhone13Mini3ScreenPreview() {
-    IPhone13Mini3Screen()
+    IPhone13Mini3Screen(
+        onBackClick = {}
+    )
 }

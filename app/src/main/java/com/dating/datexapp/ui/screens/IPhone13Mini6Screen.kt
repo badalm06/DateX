@@ -37,11 +37,15 @@ import com.dating.datexapp.ui.common.IconButtonBox
 import com.dating.datexapp.ui.common.StatusBar
 
 @Composable
-fun IPhone13Mini6Screen() {
+fun IPhone13Mini6Screen(
+    onOkClick: () -> Unit,
+    onAnyOtherClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0x80000000))
+            .clickable{onAnyOtherClick()}
     ) {
         StatusBar()
 
@@ -170,11 +174,11 @@ fun IPhone13Mini6Screen() {
                 Spacer(modifier = Modifier.height(42.dp))
 
                 GradientButton(
-                    text = "Ok",
+                    text = "OK",
                     modifier = Modifier
                         .width(337.dp)
                         .height(50.dp),
-                    onClick = { }
+                    onClick = { onOkClick() }
                 )
             }
         }
@@ -186,5 +190,8 @@ fun IPhone13Mini6Screen() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewIPhone13Mini6Screen() {
-    IPhone13Mini6Screen()
+    IPhone13Mini6Screen(
+        onAnyOtherClick = {},
+        onOkClick = {}
+    )
 }

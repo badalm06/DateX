@@ -40,7 +40,9 @@ import com.dating.datexapp.ui.common.TitleText
 import java.nio.file.Files.size
 
 @Composable
-fun EditProfileNotVerified2Screen() {
+fun EditProfileNotVerified2Screen(
+    onOkayClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -288,11 +290,11 @@ fun EditProfileNotVerified2Screen() {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 GradientButton(
-                    text = "Ok",
+                    text = "OK",
                     modifier = Modifier
                         .width(337.dp)
                         .height(50.dp),
-                    onClick = { }
+                    onClick = { onOkayClick()}
                 )
             }
 
@@ -306,5 +308,7 @@ fun EditProfileNotVerified2Screen() {
 @Preview(showBackground = true)
 @Composable
 fun EditProfileNotVerified2ScreenPreview() {
-    EditProfileNotVerified2Screen()
+    EditProfileNotVerified2Screen(
+        onOkayClick = {}
+    )
 }

@@ -29,7 +29,10 @@ import com.dating.datexapp.ui.common.StatusBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AdvanceFiltersScreen() {
+fun AdvanceFiltersScreen(
+    onApplyFilterClick: () -> Unit,
+    onBackClick: () -> Unit
+) {
     // Filter states
     var heightRange by remember { mutableStateOf(150f..200f) }
     val sexualOrientations = listOf("Straight", "Gay", "Lesbian", "Bisexual", "Asexual", "Demisexual", "Pansexual", "Questioning")
@@ -78,7 +81,7 @@ fun AdvanceFiltersScreen() {
                     }
                 },
                 navigationIcon = {
-                    IconButton(onClick = { /* TODO */ }) {
+                    IconButton(onClick = { onBackClick() }) {
                         Icon(Icons.Filled.ArrowBack, contentDescription = "Back", tint = Color.Black)
                     }
                 },
@@ -97,7 +100,7 @@ fun AdvanceFiltersScreen() {
         bottomBar = {
             GradientButton(
                 text = "Apply filters",
-                onClick = {  },
+                onClick = { onApplyFilterClick },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 32.dp)
@@ -379,5 +382,8 @@ fun WrapChips(
 @Preview(showBackground = true)
 @Composable
 fun AdvanceFiltersScreenPreview() {
-    AdvanceFiltersScreen()
+    AdvanceFiltersScreen(
+        onApplyFilterClick = {},
+        onBackClick = {}
+    )
 }

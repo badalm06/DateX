@@ -3,6 +3,7 @@ package com.dating.datexapp.ui.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,7 +27,11 @@ import com.dating.datexapp.ui.common.StatusBar
 
 @Composable
 fun LikeLimitReached3Screen(
-    onChangeFiltersClick: () -> Unit = {}
+    onChangeFiltersClick: () -> Unit = {},
+    onBottomMainClick: () -> Unit,
+    onBottomHeartClick: () -> Unit,
+    onChatClick: () -> Unit,
+    onProfileClick: () -> Unit
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
 
@@ -168,10 +173,10 @@ fun LikeLimitReached3Screen(
                 .align(Alignment.BottomCenter),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            StoryFrame(R.drawable.llr_btm_img, Color.Transparent)
-            StoryFrame(R.drawable.llr_heart, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img3, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent)
+            StoryFrame(R.drawable.llr_btm_img, Color.Transparent, true, modifier = Modifier.clickable{onBottomMainClick})
+            StoryFrame(R.drawable.ca_btm_img2, Color.Transparent, modifier = Modifier.clickable{onBottomHeartClick})
+            StoryFrame(R.drawable.chat_btm_img3, Color.Transparent, modifier = Modifier.clickable{onChatClick})
+            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent, modifier = Modifier.clickable{onProfileClick})
         }
     }
 }
@@ -179,5 +184,10 @@ fun LikeLimitReached3Screen(
 @Preview(showBackground = true)
 @Composable
 fun LikeLimitReached3ScreenPreview() {
-    LikeLimitReached3Screen()
+    LikeLimitReached3Screen(
+        onBottomMainClick = {},
+        onBottomHeartClick = {},
+        onChatClick = {},
+        onProfileClick = {}
+    )
 }

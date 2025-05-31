@@ -27,7 +27,17 @@ import com.dating.datexapp.ui.common.StatusBar
 
 
 @Composable
-fun PremiumScreen(onBackClick: () -> Unit = {}) {
+fun PremiumScreen(
+    onBackClick: () -> Unit = {},
+    onBottomMainClick: () -> Unit,
+    onBottomHeartClick: () -> Unit,
+    onChatClick: () -> Unit,
+    onProfileClick: () -> Unit,
+    onEditButtonClick: () -> Unit,
+    onFirstDownArrowClick: () -> Unit,
+    onSecondDownArrowClick: () -> Unit,
+    onGetClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -52,7 +62,7 @@ fun PremiumScreen(onBackClick: () -> Unit = {}) {
                 IconButtonBox(
                     iconResId = R.drawable.back_arrow,
                     contentDescription = "Back",
-                    onClick = onBackClick,
+                    onClick = { onBackClick() },
                 )
                 Spacer(modifier = Modifier.width(75.dp))
                 Text(
@@ -63,7 +73,7 @@ fun PremiumScreen(onBackClick: () -> Unit = {}) {
                 )
             }
 
-            ProfileHeader()
+            ProfileHeader(onEditButtonClick)
 
             Row(
                 modifier = Modifier
@@ -81,7 +91,8 @@ fun PremiumScreen(onBackClick: () -> Unit = {}) {
                     ),
                     backgroundGradient = Brush.verticalGradient(
                         listOf(Color(0xFFADDCFF), Color(0xFFEAF6FF))
-                    )
+                    ),
+                    onGetClick
                 )
 
                 GradientBorderBox(
@@ -93,7 +104,8 @@ fun PremiumScreen(onBackClick: () -> Unit = {}) {
                     ),
                     backgroundGradient = Brush.verticalGradient(
                         listOf(Color(0xFFFFBEF9), Color(0xFFFFF1FF), Color(0xFFFFF1FF))
-                    )
+                    ),
+                    onGetClick
                 )
             }
 
@@ -110,7 +122,8 @@ fun PremiumScreen(onBackClick: () -> Unit = {}) {
                 isDarkText = true,
                 modifier = Modifier
                     .width(360.dp)
-                    .height(160.dp)
+                    .height(180.dp)
+                    .clickable { onFirstDownArrowClick() }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -126,7 +139,8 @@ fun PremiumScreen(onBackClick: () -> Unit = {}) {
                 isDarkText = false,
                 modifier = Modifier
                     .width(360.dp)
-                    .height(160.dp)
+                    .height(180.dp)
+                    .clickable { onSecondDownArrowClick() }
             )
 
             Spacer(modifier = Modifier.height(70.dp))
@@ -140,24 +154,28 @@ fun PremiumScreen(onBackClick: () -> Unit = {}) {
                 .align(Alignment.BottomCenter),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            StoryFrame(R.drawable.ca_btm_img1, Color.Transparent, true)
-            StoryFrame(R.drawable.ca_btm_img2, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img3, Color.Transparent)
-            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent)
+            StoryFrame(R.drawable.llr_btm_img, Color.Transparent, true, modifier = Modifier.clickable{onBottomMainClick()})
+            StoryFrame(R.drawable.ca_btm_img2, Color.Transparent, modifier = Modifier.clickable{onBottomHeartClick()})
+            StoryFrame(R.drawable.chat_btm_img3, Color.Transparent, modifier = Modifier.clickable{onChatClick()})
+            StoryFrame(R.drawable.ca_btm_img4, Color.Transparent, modifier = Modifier.clickable{onProfileClick()})
         }
     }
 }
 
 
 @Composable
-fun ProfileHeader() {
+fun ProfileHeader(
+    onEditButtonClick: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Box(modifier = Modifier.size(165.dp).padding(top = 35.dp)) {
+        Box(modifier = Modifier
+            .size(165.dp)
+            .padding(top = 35.dp)) {
             Image(
                 painter = painterResource(id = R.drawable.profile_indicator),
                 contentDescription = null,
@@ -188,6 +206,7 @@ fun ProfileHeader() {
                     .background(Color.White)
                     .shadow(1.dp, shape = CircleShape)
                     .align(Alignment.TopEnd)
+                    .clickable { onEditButtonClick() }
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_edit_profile),
@@ -265,7 +284,8 @@ fun GradientBorderBox(
     iconId: Int,
     title: String,
     gradient: Brush,
-    backgroundGradient: Brush
+    backgroundGradient: Brush,
+    onGetClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -273,6 +293,7 @@ fun GradientBorderBox(
             .border(1.dp, brush = gradient, shape = RoundedCornerShape(10.dp))
             .clip(RoundedCornerShape(10.dp))
             .background(brush = backgroundGradient)
+            .clickable { onGetClick() }
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -379,5 +400,14 @@ fun PlanCard(
 @Preview(showBackground = true)
 @Composable
 fun PremiumScreenPreview() {
-    PremiumScreen()
+    PremiumScreen(
+        onBottomMainClick = {},
+        onBottomHeartClick = {},
+        onChatClick = {},
+        onProfileClick = {},
+        onEditButtonClick = {},
+        onFirstDownArrowClick = {},
+        onSecondDownArrowClick = {},
+        onGetClick = {}
+    )
 }
