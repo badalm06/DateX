@@ -34,7 +34,6 @@ fun AskSubmitPhotoScreen(
             .fillMaxSize()
             .background(Color(0xFFFDF7F1))
     ) {
-        StatusBar()
 
         // Close Button
         Box(

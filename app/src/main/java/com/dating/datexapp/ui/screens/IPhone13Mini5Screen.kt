@@ -43,7 +43,6 @@ fun IPhone13Mini5Screen(
             .background(Color(0x80000000))
             .clickable{onAnyOtherClick()}
     ) {
-        StatusBar()
 
         Column(
             modifier = Modifier

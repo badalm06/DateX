@@ -38,10 +38,9 @@ fun LocationSettingsScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(96.dp)
+                    .height(86.dp)
                     .border(1.dp, Color(0xFFD4D4D4))
             ) {
-                StatusBar()
                 Row(
                     modifier = Modifier
                         .padding(top = 40.dp, start = 25.dp, end = 20.dp)

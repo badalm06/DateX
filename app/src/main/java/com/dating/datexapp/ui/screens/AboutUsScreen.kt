@@ -16,7 +16,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dating.datexapp.R
 import com.dating.datexapp.ui.common.IconButtonBox
-import com.dating.datexapp.ui.common.StatusBar
 
 @Composable
 fun AboutUsScreen(
@@ -32,7 +31,6 @@ fun AboutUsScreen(
                     .height(96.dp)
                     .border(1.dp, Color(0xFFD4D4D4))
             ) {
-                StatusBar()
                 Row(
                     modifier = Modifier
                         .padding(top = 40.dp, start = 25.dp, end = 20.dp)

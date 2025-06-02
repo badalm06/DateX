@@ -52,7 +52,6 @@ fun UpdateNumberScreen(
 
         // Status Bar
         Spacer(modifier = Modifier.height(44.dp))
-        StatusBar()
 
 
         // Back Button

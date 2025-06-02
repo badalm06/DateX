@@ -35,7 +35,6 @@ fun CupidArrowFilterScreen(
             )
     ) {
 
-        StatusBar()
 
         // Top Row: Stories
         Row(

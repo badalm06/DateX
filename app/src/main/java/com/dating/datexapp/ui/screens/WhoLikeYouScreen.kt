@@ -44,7 +44,6 @@ fun WhoLikeYouScreen(
                 .fillMaxSize()
                 .background(Color(0xFFF8F8F8))
         ) {
-            StatusBar()
 
             // Logo
             Image(

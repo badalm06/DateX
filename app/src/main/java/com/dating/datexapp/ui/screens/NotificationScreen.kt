@@ -46,7 +46,6 @@ fun NotificationScreen(
                         shape = RectangleShape
                     )
             ) {
-                StatusBar()
                 Row(
                     modifier = Modifier
                         .padding(top = 40.dp, start = 25.dp, end = 20.dp)

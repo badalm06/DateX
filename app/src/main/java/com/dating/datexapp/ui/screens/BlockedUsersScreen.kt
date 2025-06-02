@@ -46,7 +46,6 @@ fun BlockedUsersScreen(
                     .height(96.dp)
                     .border(1.dp, Color(0xFFD4D4D4))
             ) {
-                StatusBar()
 
                 Row(
                     modifier = Modifier

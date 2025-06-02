@@ -45,7 +45,6 @@ fun SettingScreen(
                 .padding(horizontal = 16.dp)
         ) {
 
-            StatusBar()
             Spacer(modifier = Modifier.height(16.dp))
 
             // Back Arrow and Title

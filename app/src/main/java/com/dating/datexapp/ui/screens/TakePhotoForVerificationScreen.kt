@@ -33,8 +33,7 @@ fun TakePhotoForVerificationScreen(
             .fillMaxSize()
             .background(Color(0xFFFFFCF8))
     ) {
-        // Top StatusBar
-        StatusBar()
+
 
         // Close Button
         Box(

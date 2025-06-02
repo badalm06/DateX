@@ -46,7 +46,6 @@ fun WhomYouLikeScreen(
 ) {
     Box(modifier = Modifier.fillMaxSize().background(Color.White)) {
         Column(modifier = Modifier.fillMaxSize()) {
-            StatusBar()
             Image(
                 painter = painterResource(id = R.drawable.logo),
                 contentDescription = "Logo",

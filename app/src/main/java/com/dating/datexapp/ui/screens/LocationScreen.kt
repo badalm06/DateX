@@ -39,7 +39,7 @@ fun LocationScreen(
                 .size(width = 395.dp, height = 301.dp)
                 .align(Alignment.BottomCenter)
         )
-        StatusBar()
+
 
         Column(
             modifier = Modifier

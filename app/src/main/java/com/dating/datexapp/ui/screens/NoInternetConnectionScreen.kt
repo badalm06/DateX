@@ -44,8 +44,6 @@ fun NoInternetConnectionScreen(
                 .align(Alignment.BottomCenter)
         )
 
-        // Status bar
-        StatusBar()
 
         // Center Card
         Box(

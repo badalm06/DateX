@@ -52,7 +52,6 @@ fun EditProfileNotVerified2Screen(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            StatusBar()
             Spacer(modifier = Modifier.height(24.dp))
 
             Row(

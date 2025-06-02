@@ -44,8 +44,6 @@ fun LikeLimitReached2Screen(
                 .align(Alignment.BottomCenter)
         )
 
-        // Status bar
-        StatusBar()
 
         // Center Card
         Box(

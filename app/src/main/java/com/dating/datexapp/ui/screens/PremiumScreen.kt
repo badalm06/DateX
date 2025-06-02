@@ -43,7 +43,7 @@ fun PremiumScreen(
             .fillMaxSize()
             .background(Color(0xFFFDF9F8))
     ) {
-        StatusBar()
+        Spacer(modifier = Modifier.height(24.dp))
 
         Column(
             modifier = Modifier

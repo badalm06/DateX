@@ -71,9 +71,7 @@ fun LoginScreen(
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop // adjust to fit screen
         )
-        // Status Bar (reuse from GetStartedScreen)
-        Spacer(modifier = Modifier.height(44.dp))
-        StatusBar()
+
 
 
         // Logo

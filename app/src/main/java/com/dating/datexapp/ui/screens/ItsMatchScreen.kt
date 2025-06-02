@@ -36,8 +36,6 @@ fun ItsMatchScreen(
             .fillMaxSize()
             .background(Color.White)
     ) {
-        // Optional StatusBar()
-        StatusBar()
 
         // Bottom Curve Background
         Image(
@@ -120,7 +118,7 @@ fun ItsMatchScreen(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "it’s a Match",
+                text = "It’s a Match",
                 color = Color(0xFF00C566),
                 fontWeight = FontWeight.Bold,
                 fontSize = 16.sp
@@ -152,13 +150,12 @@ fun ItsMatchScreen(
         // Gradient Button
         GradientButton(
             text = "Say Hello 👋",
-            onClick = {  },
+            onClick = { onHelloClick() },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp)
                 .height(56.dp)
                 .offset(y = 622.dp)
-                .clickable { onHelloClick }
         )
 
         // "Not Now" Text
@@ -168,7 +165,7 @@ fun ItsMatchScreen(
             color = Color(0xFF161616),
             modifier = Modifier
                 .absoluteOffset(x = 112.dp, y = 693.dp)
-                .clickable { onNotNowClick }
+                .clickable { onNotNowClick() }
                 .width(145.dp),
             textAlign = TextAlign.Center,
             letterSpacing = 0.3.sp,

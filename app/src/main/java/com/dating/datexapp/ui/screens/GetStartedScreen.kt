@@ -47,48 +47,6 @@ fun GetStartedScreen(
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(Color(0xFFFFFBFA), Color.White)))
     ) {
-        // Status Bar
-        Spacer(modifier = Modifier.height(44.dp))
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 7.33.dp, start = 21.dp, end = 21.dp)
-                .height(21.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // Time
-            Image(
-                painter = painterResource(id = R.drawable.ic_time),
-                contentDescription = "Time",
-                modifier = Modifier.size(width = 54.dp, height = 21.dp)
-            )
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                // Cellular
-                Image(
-                    painter = painterResource(id = R.drawable.ic_cellular),
-                    contentDescription = "Cellular",
-                    modifier = Modifier.size(width = 17.dp, height = 10.66.dp)
-                )
-                // WiFi
-                Image(
-                    painter = painterResource(id = R.drawable.ic_wifi),
-                    contentDescription = "Wi-Fi",
-                    modifier = Modifier.size(width = 15.33.dp, height = 11.dp)
-                )
-                // Battery
-                Image(
-                    painter = painterResource(id = R.drawable.ic_battery),
-                    contentDescription = "Battery",
-                    modifier = Modifier.size(width = 24.33.dp, height = 11.33.dp)
-                )
-            }
-        }
 
 
         // Logo

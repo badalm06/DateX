@@ -46,7 +46,8 @@ fun Premium3Screen(
             horizontalAlignment = Alignment.CenterHorizontally
 
         ) {
-            StatusBar()
+            Spacer(modifier = Modifier.height(24.dp))
+
 
             // Header Row
             Row(

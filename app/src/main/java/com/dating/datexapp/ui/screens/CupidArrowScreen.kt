@@ -45,13 +45,9 @@ fun CupidArrowScreen(
             painter = painterResource(id = R.drawable.curve8),
             contentDescription = "Background curve",
             modifier = Modifier
-                .size(width = 385.dp, height = 281.dp)
+                .size(width = 385.dp, height = 280.dp)
                 .align(Alignment.BottomCenter)
         )
-
-        // Status bar
-        StatusBar()
-
 
         // Bottom Buttons Frame
         Row(
@@ -73,14 +69,14 @@ fun CupidArrowScreen(
             contentDescription = "Logo",
             modifier = Modifier
                 .size(121.dp)
-                .offset(x = 127.dp, y = 19.dp)
+                .offset(x = 127.dp)
         )
 
         // Background Rectangles behind the image (drawn first so they appear behind)
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .offset(y = 454.dp),
+                .offset(y = 435.dp),
             contentAlignment = Alignment.Center
         ) {
             Box(
@@ -94,7 +90,7 @@ fun CupidArrowScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .offset(y = 462.dp),
+                .offset(y = 441.dp),
             contentAlignment = Alignment.Center
         ) {
             Box(
@@ -108,7 +104,7 @@ fun CupidArrowScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .offset(y = 470.dp),
+                .offset(y = 451.dp),
             contentAlignment = Alignment.Center
         ) {
             Box(
@@ -125,7 +121,7 @@ fun CupidArrowScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .offset(y = 255.dp)
+                .offset(y = 236.dp)
         ) {
             Box(
                 modifier = Modifier
@@ -152,7 +148,7 @@ fun CupidArrowScreen(
             fontFamily = FontFamily(Font(R.font.manrope_semi_boldddd)),
             fontWeight = FontWeight.SemiBold,
             fontSize = 32.sp,
-            modifier = Modifier.offset(x = 40.dp, y = 568.dp),
+            modifier = Modifier.offset(x = 40.dp, y = 549.dp),
             color = Color.White
         )
 
@@ -162,14 +158,14 @@ fun CupidArrowScreen(
             fontWeight = FontWeight.Normal,
             fontSize = 12.sp,
             lineHeight = 12.sp,
-            modifier = Modifier.offset(x = 40.dp, y = 610.dp),
+            modifier = Modifier.offset(x = 40.dp, y = 591.dp),
             color = Color(0xCCFFFFFF)
         )
 
         // Like Button
         Box(
             modifier = Modifier
-                .offset(x = 147.dp, y = 694.dp)
+                .offset(x = 147.dp, y = 665.dp)
                 .size(80.dp)
                 .clip(CircleShape)
                 .background(Color(0xFFF64F8B))
@@ -188,7 +184,7 @@ fun CupidArrowScreen(
         // Dislike Left Button
         Box(
             modifier = Modifier
-                .offset(x = 59.dp, y = 700.dp)
+                .offset(x = 59.dp, y = 671.dp)
                 .size(60.dp)
                 .clip(CircleShape)
                 .background(Color.White)
@@ -205,7 +201,7 @@ fun CupidArrowScreen(
         // Star Button (Middle)
         Box(
             modifier = Modifier
-                .offset(x = 255.dp, y = 698.dp)
+                .offset(x = 255.dp, y = 669.dp)
                 .size(60.dp)
                 .clip(CircleShape)
                 .background(Color(0xFFF8CE61))
@@ -222,7 +218,7 @@ fun CupidArrowScreen(
         // Top Story Group (Frame 54)
         Row(
             modifier = Modifier
-                .offset(x = 25.dp, y = 115.dp)
+                .offset(x = 25.dp, y = 96.dp)
                 .height(115.dp).width(405.dp)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(10.dp)
@@ -236,7 +232,7 @@ fun CupidArrowScreen(
         // Back Arrow Left
         Box(
             modifier = Modifier
-                .offset(x = 20.dp, y = 49.dp)
+                .offset(x = 20.dp, y = 30.dp)
                 .size(32.dp)
                 .clip(CircleShape)
                 .background(Color(0xFFFFDBE0)),
@@ -252,7 +248,7 @@ fun CupidArrowScreen(
         // Back Arrow Right
         Box(
             modifier = Modifier
-                .offset(x = 339.dp, y = 49.dp)
+                .offset(x = 339.dp, y = 30.dp)
                 .size(32.dp)
                 .clip(CircleShape)
                 .clickable{onFilterClick()}

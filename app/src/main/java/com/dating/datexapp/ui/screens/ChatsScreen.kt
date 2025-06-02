@@ -38,7 +38,6 @@ fun ChatsScreen(
             .fillMaxSize()
             .background(Color.White)
     ) {
-        StatusBar()
         // Scrollable content
         Column(
             modifier = Modifier

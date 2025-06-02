@@ -120,7 +120,6 @@ fun TopBar(
             .fillMaxWidth()
             .background(Color.Black)
     ) {
-        StatusBarChat()
 
         Spacer(modifier = Modifier.height(18.dp))
 

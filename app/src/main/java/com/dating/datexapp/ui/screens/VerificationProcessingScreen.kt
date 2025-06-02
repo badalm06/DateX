@@ -74,7 +74,6 @@ fun VerificationProcessingScreen(
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
-        StatusBar()
         Spacer(modifier = Modifier.height(24.dp))
 
         Row(

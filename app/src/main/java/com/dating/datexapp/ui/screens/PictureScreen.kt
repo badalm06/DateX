@@ -52,8 +52,7 @@ fun PictureScreen(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            StatusBar()
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(54.dp))
 
             Row(
                 modifier = Modifier

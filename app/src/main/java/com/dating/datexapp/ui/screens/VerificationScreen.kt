@@ -44,9 +44,7 @@ fun VerificationCodeScreen(
                 )
             )
     ) {
-        // Status Bar
-        Spacer(modifier = Modifier.height(44.dp))
-        StatusBar()
+        Spacer(modifier = Modifier.height(24.dp))
 
 
         // Back Button

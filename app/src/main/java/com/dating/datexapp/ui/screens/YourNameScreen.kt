@@ -42,9 +42,7 @@ fun YourNameScreen(
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            StatusBar()
-
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(44.dp))
 
             Row(
                 modifier = Modifier
