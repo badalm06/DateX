@@ -12,14 +12,14 @@ Welcome to **DateX**, a beautifully designed, modern dating application built wi
 ---
 
 ## 🖼️ Screenshots
-<img width="200" alt="Screenshot 2025-06-05 at 1 18 20 PM" src="https://github.com/user-attachments/assets/d662d59f-be89-45eb-99bf-dadd8d8b99ea" /> &nbsp;&nbsp;&nbsp;
-<img width="200" alt="Screenshot 2025-06-05 at 1 18 22 PM" src="https://github.com/user-attachments/assets/6fa14701-662c-4642-b082-33c418165f09" /> &nbsp;&nbsp;&nbsp;
-<img width="200" alt="Screenshot 2025-06-05 at 1 05 08 PM" src="https://github.com/user-attachments/assets/86f7bf16-093b-40f6-bf85-d9e20bff2cd6" /> &nbsp;&nbsp;&nbsp;
-<img width="200" alt="Screenshot 2025-06-05 at 1 05 31 PM" src="https://github.com/user-attachments/assets/0272b422-6fe0-48e4-bf4c-4a598d13fb51" /> &nbsp;&nbsp;&nbsp;
-<img width="200" alt="Screenshot 2025-06-05 at 1 05 35 PM" src="https://github.com/user-attachments/assets/5a0f6dcd-2860-4934-86e0-d1e2b6dd0e37" /> &nbsp;&nbsp;&nbsp;
-<img width="200" alt="Screenshot 2025-06-05 at 1 05 39 PM" src="https://github.com/user-attachments/assets/37bc7e46-a227-4dc6-b2a5-e42589ba793d" /> &nbsp;&nbsp;&nbsp;
-<img width="200" alt="Screenshot 2025-06-05 at 1 08 36 PM" src="https://github.com/user-attachments/assets/1f7d8198-3375-4154-83d7-c252bc2d5ecc" /> &nbsp;&nbsp;&nbsp;
-<img width="200" alt="Screenshot 2025-06-05 at 1 09 01 PM" src="https://github.com/user-attachments/assets/448479fc-cb2c-4d69-8e91-f346c0e901a0" />
+<img width="150" alt="Screenshot 2025-06-05 at 1 18 20 PM" src="https://github.com/user-attachments/assets/d662d59f-be89-45eb-99bf-dadd8d8b99ea" /> &nbsp;&nbsp;&nbsp;
+<img width="150" alt="Screenshot 2025-06-05 at 1 18 22 PM" src="https://github.com/user-attachments/assets/6fa14701-662c-4642-b082-33c418165f09" /> &nbsp;&nbsp;&nbsp;
+<img width="150" alt="Screenshot 2025-06-05 at 1 05 08 PM" src="https://github.com/user-attachments/assets/86f7bf16-093b-40f6-bf85-d9e20bff2cd6" /> &nbsp;&nbsp;&nbsp;
+<img width="150" alt="Screenshot 2025-06-05 at 1 05 31 PM" src="https://github.com/user-attachments/assets/0272b422-6fe0-48e4-bf4c-4a598d13fb51" /> &nbsp;&nbsp;&nbsp;
+<img width="150" alt="Screenshot 2025-06-05 at 1 05 35 PM" src="https://github.com/user-attachments/assets/5a0f6dcd-2860-4934-86e0-d1e2b6dd0e37" /> &nbsp;&nbsp;&nbsp;
+<img width="150" alt="Screenshot 2025-06-05 at 1 05 39 PM" src="https://github.com/user-attachments/assets/37bc7e46-a227-4dc6-b2a5-e42589ba793d" /> &nbsp;&nbsp;&nbsp;
+<img width="150" alt="Screenshot 2025-06-05 at 1 08 36 PM" src="https://github.com/user-attachments/assets/1f7d8198-3375-4154-83d7-c252bc2d5ecc" /> &nbsp;&nbsp;&nbsp;
+<img width="150" alt="Screenshot 2025-06-05 at 1 09 01 PM" src="https://github.com/user-attachments/assets/448479fc-cb2c-4d69-8e91-f346c0e901a0" />
 
 ---
 
