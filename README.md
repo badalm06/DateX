@@ -72,7 +72,7 @@ Welcome to **DateX**, a beautifully designed, modern dating application built wi
 
 1. **Clone the repository**
     ```bash
-    git clone https://github.com/yourusername/datex-app.git
+    git clone https://github.com/badalm06/DateX.git
     cd datex-app
     ```
 
@@ -88,4 +88,10 @@ Welcome to **DateX**, a beautifully designed, modern dating application built wi
 
 ---
 
+## 💬 Contact & Support
+
+For any queries, feel free to reach out:
+
+📧 Email: [badalsh908@email.com](mailto:badalsh908@email.com)  
+🐙 GitHub: [github.com/badalm06](https://github.com/badalm06)
 
