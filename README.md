@@ -92,6 +92,6 @@ Welcome to **DateX**, a beautifully designed, modern dating application built wi
 
 For any queries, feel free to reach out:
 
-📧 Email: [badalsh908@email.com](mailto:badalsh908@email.com)  
+📧 Email: [badalsh908@email.com](mailto:badalsh908@gmail.com)  
 🐙 GitHub: [github.com/badalm06](https://github.com/badalm06)
 
