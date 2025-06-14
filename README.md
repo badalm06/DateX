@@ -4,6 +4,9 @@ Welcome to **DateX**, a beautifully designed, modern dating application built wi
 
 ![Made with Kotlin](https://img.shields.io/badge/Made%20with-Kotlin-7F52FF.svg?style=for-the-badge&logo=kotlin)
 ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-4285F4.svg?style=for-the-badge&logo=android) &nbsp;&nbsp;&nbsp;
+![Platform](https://img.shields.io/badge/Platform-Android-green?style=for-the-badge&logo=android) &nbsp;&nbsp;&nbsp;
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge) &nbsp;&nbsp;&nbsp;
+
 
 
 ---
