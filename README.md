@@ -2,8 +2,8 @@
 
 Welcome to **DateX**, a beautifully designed, modern dating application built with **Jetpack Compose**. From stylish onboarding to custom match screens, DateX is built to deliver a seamless and engaging user experience for connecting people.
 
-
-
+![Made with Kotlin](https://img.shields.io/badge/Made%20with-Kotlin-7F52FF.svg?style=for-the-badge&logo=kotlin)
+![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-4285F4.svg?style=for-the-badge&logo=android) &nbsp;&nbsp;&nbsp;
 
 
 ---
